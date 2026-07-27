@@ -142,8 +142,8 @@ def test_current_full_routes_keep_independent_evidence_states():
         assert status.benchmark.status == "registered"
         assert status.cross_engine.status == "passed"
         assert status.external_review.status == "pending"
-        assert status.public_release.status == "missing"
-        assert status.compatibility_knowledge_status == "cas_validated"
+        assert status.public_release.status == "passed"
+        assert status.compatibility_knowledge_status == "released"
 
     assert sum(
         route.evidence_status.literature_reproduction == "passed"
@@ -244,6 +244,38 @@ def test_custom_registry_still_verifies_evidence_by_default(tmp_path):
     )
 
     with pytest.raises(FileNotFoundError, match="Cross-engine result does not exist"):
+        CapabilityRegistry(registry_path)
+
+
+def test_public_release_pass_requires_eligible_remote_result(tmp_path):
+    registry_payload = yaml.safe_load(
+        (PROJECT_ROOT / "knowledge_base/capabilities.yaml").read_text(
+            encoding="utf-8"
+        )
+    )
+    route = next(
+        item
+        for item in registry_payload["routes"]
+        if item["route_id"] == "afm_stripe_sot_full"
+    )
+    fake_evidence = tmp_path / "public_release_evidence_record.yaml"
+    fake_evidence.write_text(
+        yaml.safe_dump(
+            {
+                "evidence_axis": "public_release",
+                "status": "passed",
+                "scope": "software_distribution",
+            }
+        ),
+        encoding="utf-8",
+    )
+    route["evidence"]["public_release_records"] = [str(fake_evidence)]
+    registry_path = tmp_path / "capabilities.yaml"
+    registry_path.write_text(
+        yaml.safe_dump(registry_payload, sort_keys=False), encoding="utf-8"
+    )
+
+    with pytest.raises(ValueError, match="no eligible public-release result"):
         CapabilityRegistry(registry_path)
 
 

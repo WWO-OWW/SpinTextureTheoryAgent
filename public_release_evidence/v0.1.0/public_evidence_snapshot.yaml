@@ -1,0 +1,71 @@
+schema_version: 1.0.0
+snapshot_id: project1_v0.1.0_public_evidence01
+created_at: '2026-07-27T15:30:39+08:00'
+source_remote_result:
+  schema_version: 1.1.0
+  sha256: 1f23ec931aa10330a614914b16bba7331ea84aa9564ff234fbbbbf3f54b260cc
+publication:
+  provider: github_release
+  immutable_identifier: github:WWO-OWW/SpinTextureTheoryAgent@v0.1.0
+  release_tag: v0.1.0
+  artifact_url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/v0.1.0/project1_v0.1.0_rc04_distribution01.tar.gz
+release_binding:
+  handoff_id: project1_v0.1.0_rc04_publication01
+  handoff_manifest_sha256: 6b18ca0733af5fff82abf35e5f1f77c1b9fdb9bd8971ec135e912f320c909760
+  archive_filename: project1_v0.1.0_rc04_distribution01.tar.gz
+  archive_sha256: f42cde4eeb776d39c1f0168e279571e8de887e4028ea22ec7e54bdbd4b74579e
+  archive_size_bytes: 5371969
+  distribution_manifest_sha256: c077184704494830aac4fdf2a1f6532238c615d30597c00ceb14ab1ff5e1f739
+  verifier_sha256: 3a729e2c198a54d115fa75612ccc0dc72bde88a64c430aca02ab7e5d3a255147
+network_policy:
+  allow_rfc2544_proxy: true
+  tls_hostname_validation_required: true
+  exact_archive_hash_required: true
+claim_boundaries:
+  paper_benchmark_result_claimed: false
+  held_out_evidence_claimed: false
+  external_review_claimed: false
+  named_material_validation_claimed: false
+  registry_mutated_before_remote_verification: false
+state:
+  source_remote_result_verified: true
+  public_release_registration_eligible: true
+  retained_archive_in_snapshot: false
+  remote_refetch_supported: true
+  claim_scope: software_distribution
+artifacts:
+  VERIFY.md:
+    path: VERIFY.md
+    sha256: 3c85710925949f9efbf985e9220462709176d9d3f2e6324c24725ab753444357
+    size_bytes: 1069
+    category: public_release_evidence
+  public_release_evidence_record.yaml:
+    path: public_release_evidence_record.yaml
+    sha256: 4ddf034dc1262e02058559971b1b20dca609828b0de48ed2b72a74bc8b557d46
+    size_bytes: 1165
+    category: public_release_evidence
+  publication_handoff_manifest.sha256:
+    path: publication_handoff_manifest.sha256
+    sha256: 42098361ba4c974a8313533e6d4c15e65daf46b3c857b20ff4906b35a9f1537d
+    size_bytes: 100
+    category: public_release_evidence
+  publication_handoff_manifest.yaml:
+    path: publication_handoff_manifest.yaml
+    sha256: 6b18ca0733af5fff82abf35e5f1f77c1b9fdb9bd8971ec135e912f320c909760
+    size_bytes: 8551
+    category: public_release_evidence
+  publication_record.yaml:
+    path: publication_record.yaml
+    sha256: 7f7a4b385e0379072b989445027102d3049ca50941393b1f9e38cf3113628337
+    size_bytes: 813
+    category: public_release_evidence
+  remote_verification_summary.json:
+    path: remote_verification_summary.json
+    sha256: 27c321a6d70f76bace1eb6db8e22f828e2ec114a17807f387356f2f1f5fba365
+    size_bytes: 2132
+    category: public_release_evidence
+  remote_verifier.py:
+    path: remote_verifier.py
+    sha256: 3a729e2c198a54d115fa75612ccc0dc72bde88a64c430aca02ab7e5d3a255147
+    size_bytes: 61477
+    category: public_release_evidence

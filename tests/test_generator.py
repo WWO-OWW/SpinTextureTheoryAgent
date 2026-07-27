@@ -33,7 +33,7 @@ def test_generate_afm_stripe_bundle(tmp_path):
     assert "SPINTEXTURE_AGENT_RESULT_JSON_BEGIN" in wolfram
     assert physics_ir.order_parameter.topology_field == "n"
     assert physics_ir.support_level == "full_derivation"
-    assert physics_ir.knowledge_status == "cas_validated"
+    assert physics_ir.knowledge_status == "released"
     assert physics_ir.capability_route_id == "afm_stripe_sot_full"
     assert physics_ir.dimension_contract is not None
     assert physics_ir.dimension_contract.convention == "one_dimensional_energy_per_transverse_area"

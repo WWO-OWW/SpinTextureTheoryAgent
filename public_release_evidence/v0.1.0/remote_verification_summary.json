@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "source_remote_result": {
+    "schema_version": "1.1.0",
+    "sha256": "1f23ec931aa10330a614914b16bba7331ea84aa9564ff234fbbbbf3f54b260cc"
+  },
+  "status": "pass",
+  "remote_publication_verified": true,
+  "eligible_for_public_release_registration": true,
+  "retrieved_at": "2026-07-27T14:57:46+08:00",
+  "provider": "github_release",
+  "immutable_identifier": "github:WWO-OWW/SpinTextureTheoryAgent@v0.1.0",
+  "transport": {
+    "declared_url": "https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/v0.1.0/project1_v0.1.0_rc04_distribution01.tar.gz",
+    "final_hostname": "release-assets.githubusercontent.com",
+    "declared_resolution": {
+      "hostname": "github.com",
+      "resolved_addresses": [
+        "198.18.2.226"
+      ],
+      "resolution_mode": "rfc2544_https_proxy"
+    },
+    "final_resolution": {
+      "hostname": "release-assets.githubusercontent.com",
+      "resolved_addresses": [
+        "198.18.15.175"
+      ],
+      "resolution_mode": "rfc2544_https_proxy"
+    },
+    "http_status": 200,
+    "content_type": "application/octet-stream",
+    "content_length_header": "5371969",
+    "etag": "\"0x8DEEBAB5EB0756C\"",
+    "last_modified": "Mon, 27 Jul 2026 06:50:39 GMT",
+    "downloaded_size_bytes": 5371969
+  },
+  "expected_archive_sha256": "f42cde4eeb776d39c1f0168e279571e8de887e4028ea22ec7e54bdbd4b74579e",
+  "retrieved_archive_sha256": "f42cde4eeb776d39c1f0168e279571e8de887e4028ea22ec7e54bdbd4b74579e",
+  "retrieved_archive_size_bytes": 5371969,
+  "distribution_manifest_sha256": "c077184704494830aac4fdf2a1f6532238c615d30597c00ceb14ab1ff5e1f739",
+  "verifier_sha256": "3a729e2c198a54d115fa75612ccc0dc72bde88a64c430aca02ab7e5d3a255147",
+  "network_policy": {
+    "allow_rfc2544_proxy": true,
+    "tls_hostname_validation_required": true,
+    "exact_archive_hash_required": true
+  },
+  "claim_boundaries": {
+    "paper_benchmark_result_claimed": false,
+    "held_out_evidence_claimed": false,
+    "external_review_claimed": false,
+    "named_material_validation_claimed": false,
+    "registry_mutated_before_remote_verification": false
+  },
+  "issues": []
+}

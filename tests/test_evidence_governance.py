@@ -20,7 +20,10 @@ def test_pending_external_review_does_not_block_known_theory_benchmark():
         update={
             "benchmark": status.benchmark.model_copy(
                 update={"status": "passed", "artifact_refs": ["benchmark.json"]}
-            )
+            ),
+            "public_release": status.public_release.model_copy(
+                update={"status": "missing", "artifact_refs": []}
+            ),
         }
     )
 

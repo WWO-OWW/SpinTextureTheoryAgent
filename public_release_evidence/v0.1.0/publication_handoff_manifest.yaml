@@ -1,0 +1,191 @@
+schema_version: 1.0.0
+handoff_id: project1_v0.1.0_rc04_publication01
+created_at: '2026-07-27T14:10:01+08:00'
+distribution:
+  bundle_id: project1_v0.1.0_rc04_distribution01
+  source_path: analysis/distribution_bundles/project1_v0.1.0_rc04_distribution01
+  manifest_sha256: c077184704494830aac4fdf2a1f6532238c615d30597c00ceb14ab1ff5e1f739
+  release_candidate_id: project1_v0.1.0_rc04
+  release_candidate_manifest_sha256: 71b9e75e7af6793384ae60320f985c18930d9782c92a05ba7079d003fb2f91a6
+  package_name: spintexture-theory-agent
+  package_version: 0.1.0
+  bundle_file_count: 42
+  bundle_files:
+  - path: CHECKSUMS.sha256
+    sha256: bdf34fa5ccb745601554c052c06af07371c2e649a5837725cfd0b40ebe8b3d6a
+    size_bytes: 3827
+  - path: REPRODUCE.md
+    sha256: e1b773b10db1dfcf3fe1a4744544a9f10e41a29beb33a3aaa0e1b81955525369
+    size_bytes: 756
+  - path: dependency_inventory.json
+    sha256: 7dd6a77a9a9f8ba119b4dac92e7c343bf58880d42a11293b1ac848f0bd0d442f
+    size_bytes: 4378
+  - path: dist/spintexture_theory_agent-0.1.0-py3-none-any.whl
+    sha256: b2ae31e46fd9c5b7dbdad1765aea235e98b8b0dbc2773e67071f79c74a1eae1f
+    size_bytes: 231838
+  - path: dist/spintexture_theory_agent-0.1.0.tar.gz
+    sha256: 2185fef7cc6afc38d411c55ea5c9eede0a9c2c6094b0b957a12eee03061cdd24
+    size_bytes: 284911
+  - path: distribution_manifest.sha256
+    sha256: 6c9156a5bb7bbffa2b1cf8a1eb7f1f5a29b5e0270b04996d29ba6f177128a4d9
+    size_bytes: 93
+  - path: distribution_manifest.yaml
+    sha256: c077184704494830aac4fdf2a1f6532238c615d30597c00ceb14ab1ff5e1f739
+    size_bytes: 33303
+  - path: distribution_verification.json
+    sha256: b1f4f2959156ceac1fdbb2e33deaee0ee652e9cfa9a3b77f27c92525cfd88eef
+    size_bytes: 627
+  - path: distribution_verification.md
+    sha256: 0844b475b55ab47a1724968201ec36449e4d49c96f6a3d8a8b344f8a9477bd86
+    size_bytes: 325
+  - path: examples/afm_stripe_sot.yaml
+    sha256: 9109f6ee753347abdbdafa33ec04165b00def45b1f4e2f57b6e72c5d61401c8d
+    size_bytes: 761
+  - path: logs/build_sdist_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/build_sdist_stdout.txt
+    sha256: 1d2c9e56077d9455c78c7871a969522ec7885885b7f74baf42282200e7f7a818
+    size_bytes: 12253
+  - path: logs/build_wheel_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/build_wheel_stdout.txt
+    sha256: acbdd6eabfa4cf9bb73a8b2370834277488563e1280f1b8d1171e19efcd53059
+    size_bytes: 709
+  - path: logs/clean_install_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/clean_install_stdout.txt
+    sha256: 2dbac7c18fc0140cbb067dfc34cbb203ff9c4d047cf5fd48240d35eba59d0ad5
+    size_bytes: 2081
+  - path: logs/dependency_download_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/dependency_download_stdout.txt
+    sha256: fb0a9fa1afd3bec1a6f3191e11ce0478b5149fd3b9ae22f5d0a65b819811f375
+    size_bytes: 4835
+  - path: logs/import_smoke_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/import_smoke_stdout.txt
+    sha256: 5bfde28b3e5c03946a5754b004cad077be5f618320df8d29a10fdaa3a1f37e90
+    size_bytes: 23
+  - path: logs/plan_smoke_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/plan_smoke_stdout.txt
+    sha256: 3bf4b02bd1fa9b34b5c67d9288373017811c0dada477b0c248189346ceebd46b
+    size_bytes: 1309
+  - path: logs/validate_smoke_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/validate_smoke_stdout.txt
+    sha256: 05fd036e957a14c2aa924948c7f993de0ebb7e924cb7242e108dce0b4c1a0401
+    size_bytes: 1348
+  - path: logs/venv_create_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/venv_create_stdout.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/wolfram_load_stderr.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  - path: logs/wolfram_load_stdout.txt
+    sha256: 47179cf80e28a192aa8225656979b059e55c9d4d16c8e52c757f5bf08a8b1bc5
+    size_bytes: 23
+  - path: source/spintexture-theory-agent-0.1.0-normalized.tar.gz
+    sha256: 8dafc37c2bdece7ede4ab58086b58c41de5e2d46058af98a266ad89d52137ba6
+    size_bytes: 273172
+  - path: wheelhouse/annotated_types-0.8.0-py3-none-any.whl
+    sha256: f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0
+    size_bytes: 13427
+  - path: wheelhouse/jinja2-3.1.6-py3-none-any.whl
+    sha256: 85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67
+    size_bytes: 134899
+  - path: wheelhouse/markdown_it_py-4.2.0-py3-none-any.whl
+    sha256: 9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a
+    size_bytes: 91687
+  - path: wheelhouse/markupsafe-3.0.3-cp311-cp311-macosx_10_9_x86_64.whl
+    sha256: 1cc7ea17a6824959616c525620e387f6dd30fec8cb44f649e31712db02123dad
+    size_bytes: 11631
+  - path: wheelhouse/mdurl-0.1.2-py3-none-any.whl
+    sha256: 84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8
+    size_bytes: 9979
+  - path: wheelhouse/pydantic-2.13.4-py3-none-any.whl
+    sha256: 45a282cde31d808236fd7ea9d919b128653c8b38b393d1c4ab335c62924d9aba
+    size_bytes: 472262
+  - path: wheelhouse/pydantic_core-2.46.4-cp311-cp311-macosx_10_12_x86_64.whl
+    sha256: 0e96592440881c74a213e5ad528e2b24d3d4f940de2766bed9010ab1d9e51594
+    size_bytes: 2111872
+  - path: wheelhouse/pygments-2.20.0-py3-none-any.whl
+    sha256: 81a9e26dd42fd28a23a2d169d86d7ac03b46e2f8b59ed4698fb4785f946d0176
+    size_bytes: 1231151
+  - path: wheelhouse/pyyaml-6.0.3-cp311-cp311-macosx_10_13_x86_64.whl
+    sha256: 44edc647873928551a01e7a563d7452ccdebee747728c1080d881d68af7b997e
+    size_bytes: 185826
+  - path: wheelhouse/rich-15.0.0-py3-none-any.whl
+    sha256: 33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb
+    size_bytes: 310654
+  - path: wheelhouse/typing_extensions-4.16.0-py3-none-any.whl
+    sha256: 481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8
+    size_bytes: 45571
+  - path: wheelhouse/typing_inspection-0.4.2-py3-none-any.whl
+    sha256: 4ed1cacbdc298c220f1bd249ed5287caa16f34d44ef4e9c3d0cbad5b521545e7
+    size_bytes: 14611
+  - path: wolfram/SpinTextureTheory.wl
+    sha256: ebddb7d83641e8942520a230329e3fa94b7adf71d85bc752412b71cd6fb3d15a
+    size_bytes: 14277
+artifacts:
+  publication_archive:
+    path: payload/project1_v0.1.0_rc04_distribution01.tar.gz
+    sha256: f42cde4eeb776d39c1f0168e279571e8de887e4028ea22ec7e54bdbd4b74579e
+    size_bytes: 5371969
+    category: publication_archive
+  archive_digest:
+    path: payload/project1_v0.1.0_rc04_distribution01.tar.gz.sha256
+    sha256: 2df67ffc25f95e4d1f92736f2023f01491dbdc4ed7842a030277961015873049
+    size_bytes: 109
+    category: archive_digest
+  distribution_manifest_digest:
+    path: payload/distribution_manifest.sha256
+    sha256: 6c9156a5bb7bbffa2b1cf8a1eb7f1f5a29b5e0270b04996d29ba6f177128a4d9
+    size_bytes: 93
+    category: distribution_manifest_digest
+  release_notes:
+    path: RELEASE_NOTES.md
+    sha256: e34ddb6549ed6ec554045c127ad96b07de6a439cd3c9ec5b330762613eed1094
+    size_bytes: 800
+    category: release_notes
+  handoff_guide:
+    path: PUBLICATION_HANDOFF.md
+    sha256: c980bfdf792fa0bcc8c9d17ee07a7603839cd0f7b68a83785890711a8bb8f6f4
+    size_bytes: 701
+    category: handoff_guide
+  registration_template:
+    path: publication_registration_template.yaml
+    sha256: 2f3b796cc5b52d2a66addb6914c7d2405ced24db10750ae8fef9c098251ebd1d
+    size_bytes: 640
+    category: registration_template
+  verifier:
+    path: verifier/project1_publication.py
+    sha256: acf11466694bb15e1cdffed9dba881dc51d9f833df1b2343400bf7cc9caf91b8
+    size_bytes: 58256
+    category: remote_verifier
+  checksums:
+    path: CHECKSUMS.sha256
+    sha256: 8ab0c07acb2c57efcb9470055826491076cb34511eef842814684095616636d7
+    size_bytes: 720
+    category: checksums
+state:
+  handoff_ready_for_upload: true
+  remote_publication_verified: false
+  public_release_badge_registration_ready: false
+claim_boundaries:
+  public_release_axis_mutated: false
+  paper_benchmark_result_claimed: false
+  held_out_evidence_claimed: false
+  external_review_claimed: false
+  named_material_validation_claimed: false
+  handoff_is_publication: false

@@ -369,6 +369,58 @@ class CapabilityRegistryData(BaseModel):
                         f"Route {route.route_id} has no executable passing "
                         "literature-reproduction result."
                     )
+            if verify_artifacts and evidence_status.public_release.status == "passed":
+                from release_tools.project1_publication import (
+                    PUBLIC_RELEASE_EVIDENCE,
+                    PUBLIC_SNAPSHOT_MANIFEST,
+                    verify_public_evidence_snapshot,
+                    verify_remote_result,
+                )
+
+                eligible_public_release = False
+                verification_errors: list[str] = []
+                for release_ref in route.evidence.public_release_records:
+                    evidence_path = PROJECT_ROOT / release_ref
+                    if evidence_path.name != PUBLIC_RELEASE_EVIDENCE:
+                        verification_errors.append(
+                            f"unexpected evidence filename: {evidence_path.name}"
+                        )
+                        continue
+                    try:
+                        evidence_payload = yaml.safe_load(
+                            evidence_path.read_text(encoding="utf-8")
+                        )
+                        if (evidence_path.parent / PUBLIC_SNAPSHOT_MANIFEST).is_file():
+                            verification = verify_public_evidence_snapshot(
+                                evidence_path.parent
+                            )
+                            evidence_is_eligible = verification[
+                                "snapshot_integrity_passed"
+                            ]
+                        else:
+                            verification = verify_remote_result(evidence_path.parent)
+                            evidence_is_eligible = verification[
+                                "eligible_for_public_release_registration"
+                            ]
+                    except (FileNotFoundError, TypeError, ValueError) as exc:
+                        verification_errors.append(str(exc))
+                        continue
+                    if (
+                        isinstance(evidence_payload, dict)
+                        and evidence_payload.get("evidence_axis") == "public_release"
+                        and evidence_payload.get("status") == "passed"
+                        and evidence_payload.get("scope") == "software_distribution"
+                        and evidence_is_eligible
+                    ):
+                        eligible_public_release = True
+                        break
+                    verification_errors.extend(verification.get("issues", []))
+                if not eligible_public_release:
+                    details = "; ".join(verification_errors) or "no eligible record"
+                    raise ValueError(
+                        f"Route {route.route_id} has no eligible public-release "
+                        f"result: {details}"
+                    )
             if route.support_level != "full_derivation" and not route.promotion_requirements:
                 raise ValueError(
                     f"Non-full route {route.route_id} must state promotion requirements."

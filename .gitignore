@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+outputs/**
+!outputs/
+!outputs/.gitkeep
+results/**
+!results/
+!results/.gitkeep
+
+# Real benchmark custody artifacts may contain blinded or plaintext evaluation data.
+benchmark_intake/
+benchmark_system_freezes/
+custodian_handoffs/
+registration_candidates/
+
+# Private collection ledgers may contain participant identities and contact records.
+benchmark_collection_working/

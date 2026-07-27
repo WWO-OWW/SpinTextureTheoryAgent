@@ -33,13 +33,15 @@ routes:
       benchmark: registered
       cross_engine: passed
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: false
     permitted_claim: Complete executable AFM sigma-model and wall-chain derivation under the registered rigid-wall, force, boundary, and stiffness assumptions.
     blocked_claims:
       - Material-specific quantitative prediction without fitted parameters.
       - Unpinned internal-angle or nonlocal wall-interaction dynamics.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/afm_stripe_sot.yaml
       benchmark_cases: [benchmark_cases/A4_afm_stripe_sot.yaml]
       evidence_card: evidence_cards/core3/A4_afm_stripe_sot.yaml
@@ -99,12 +101,14 @@ routes:
       benchmark: registered
       cross_engine: passed
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: false
     permitted_claim: Complete executable rigid FM-skyrmion Thiele derivation with registered topology, SOT, and boundary conventions.
     blocked_claims:
       - Deformable, high-velocity, or material-unspecified skyrmion dynamics.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/fm_skyrmion_sot.yaml
       benchmark_cases: [benchmark_cases/B1_fm_skyrmion_sot.yaml]
       evidence_card: evidence_cards/core3/B1_fm_skyrmion_sot.yaml
@@ -164,12 +168,14 @@ routes:
       benchmark: registered
       cross_engine: passed
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: false
     permitted_claim: Complete executable compensated-AFM skyrmion inertial derivation with sublattice gyrotropic cancellation under the registered assumptions.
     blocked_claims:
       - Uncompensated, noncollinear, or internal-mode AFM-skyrmion dynamics.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/afm_skyrmion_inertia.yaml
       benchmark_cases:
         - benchmark_cases/B2_afm_skyrmion_sot.yaml
@@ -228,12 +234,14 @@ routes:
       benchmark: missing
       cross_engine: missing
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Candidate AFM-skyrmion model and executable derivation scaffold with an explicit missing-evidence list.
     blocked_claims:
       - A final inertial equation or topological value before profile, boundary, torque, and sublattice conventions are supplied.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/afm_skyrmion_safety_scaffold.yaml
       benchmark_cases: []
       wolfram_functions: [AFMSigmaEquation, TopologicalDensity2D]
@@ -279,12 +287,14 @@ routes:
       benchmark: registered
       cross_engine: passed
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Complete executable elliptic antiskyrmion Thiele derivation for the registered anisotropic-DMI ansatz and axes.
     blocked_claims:
       - Applicability to an arbitrary magnetic point group or unconstrained antiskyrmion deformation.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/fm_antiskyrmion_sot.yaml
       benchmark_cases: [benchmark_cases/B4_fm_antiskyrmion_sot.yaml]
       evidence_card: evidence_cards/extended/B4_fm_antiskyrmion_sot.yaml
@@ -339,12 +349,14 @@ routes:
       benchmark: registered
       cross_engine: passed
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Boundary-conditioned half-integer meron charge for the registered axisymmetric profile and winding convention.
     blocked_claims:
       - A universal meron charge without core and far-field boundary data.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/fm_meron_topology.yaml
       benchmark_cases: [benchmark_cases/C2_fm_meron_topology.yaml]
       evidence_card: evidence_cards/extended/C2_fm_meron_topology.yaml
@@ -393,12 +405,14 @@ routes:
       benchmark: registered
       cross_engine: passed
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Additive bimeron charge for the registered well-separated two-meron construction and pairing rules.
     blocked_claims:
       - Exact charge additivity for strongly overlapping cores without direct full-field integration.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/fm_bimeron_topology.yaml
       benchmark_cases: [benchmark_cases/C3_fm_bimeron_topology.yaml]
       evidence_card: evidence_cards/extended/C3_fm_bimeron_topology.yaml
@@ -445,12 +459,14 @@ routes:
       benchmark: registered
       cross_engine: passed
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Closed-contour vortex winding and its distinction from polarity-dependent full-plane topological charge.
     blocked_claims:
       - Equating winding number with skyrmion charge without boundary and core information.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/fm_vortex_topology.yaml
       benchmark_cases: [benchmark_cases/C4_fm_vortex_topology.yaml]
       evidence_card: evidence_cards/extended/C4_fm_vortex_topology.yaml
@@ -491,12 +507,14 @@ routes:
       benchmark: registered
       cross_engine: missing
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Review-only AFM stripe model-selection guidance and a list of symmetry information needed to choose DMI.
     blocked_claims:
       - Any DMI-dependent wall equation while the DMI symmetry remains unspecified.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/afm_stripe_unspecified_dmi.yaml
       benchmark_cases: [benchmark_cases/E3_afm_stripe_unspecified_dmi.yaml]
       wolfram_functions: [AFMSigmaEquation]
@@ -529,12 +547,14 @@ routes:
       benchmark: registered
       cross_engine: missing
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Review-only identification of a two-sublattice ferrimagnetic route and compensation-dependent checks.
     blocked_claims:
       - A derived ferrimagnetic skyrmion equation or topology based on total magnetization alone.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/ferrimagnet_skyrmion_sot.yaml
       benchmark_cases: [benchmark_cases/F1_ferrimagnet_skyrmion_compensation.yaml]
       wolfram_functions: []
@@ -573,12 +593,14 @@ routes:
       benchmark: missing
       cross_engine: missing
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Candidate altermagnetic Physics IR, symmetry questions, and tensorial derivation plan for expert review.
     blocked_claims:
       - Reuse of scalar collinear-AFM mass, damping, stiffness, or SOT coefficients as a final altermagnetic result.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/altermagnet_stripe_sot_review.yaml
       benchmark_cases: []
       wolfram_functions: []
@@ -617,12 +639,14 @@ routes:
       benchmark: missing
       cross_engine: missing
       external_review: pending
-      public_release: missing
+      public_release: passed
     requires_human_review: true
     permitted_claim: Candidate multisublattice Physics IR and topology/dynamics review plan for a specified noncollinear AFM.
     blocked_claims:
       - Reduction to a single Neel vector or total-magnetization topology without symmetry proof.
     evidence:
+      public_release_records:
+        - public_release_evidence/v0.1.0/public_release_evidence_record.yaml
       config: configs/noncollinear_afm_skyrmion_sot_review.yaml
       benchmark_cases: []
       wolfram_functions: []

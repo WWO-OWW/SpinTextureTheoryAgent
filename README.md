@@ -388,10 +388,24 @@ python -m spintexture_agent.cli distribution-bundle verify \
 
 The clean environment installs with `--no-index` from the frozen wheelhouse,
 then checks installed runtime resources, CLI `validate`/`plan`, and direct
-Wolfram library loading. A passing local bundle is eligible for a later durable
-publication step, but it still leaves `public_release=missing` and makes no
-held-out benchmark, external-review, or named-material claim. See
+Wolfram library loading. The frozen bundle itself does not grant a public
+release badge. The exact distribution was subsequently published as GitHub
+release `v0.1.0`, remotely re-downloaded, hash-verified, and registered as
+`public_release=passed` in the current development registry. This software
+release evidence makes no held-out benchmark, external-review, or
+named-material claim. See
 [docs/PROJECT_1_DISTRIBUTION_BUNDLE_PROTOCOL.md](docs/PROJECT_1_DISTRIBUTION_BUNDLE_PROTOCOL.md).
+
+Public release: [GitHub `v0.1.0`](https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/tag/v0.1.0).
+The published distribution archive has SHA-256
+`f42cde4eeb776d39c1f0168e279571e8de887e4028ea22ec7e54bdbd4b74579e`.
+The compact evidence snapshot under `public_release_evidence/v0.1.0/` can be
+checked offline or can re-fetch and verify the exact public bytes:
+
+```bash
+python release_tools/project1_publication.py verify-public-snapshot \
+  --snapshot public_release_evidence/v0.1.0 --require-pass
+```
 
 Generate a frozen expert-review packet from a completed evidence run:
 

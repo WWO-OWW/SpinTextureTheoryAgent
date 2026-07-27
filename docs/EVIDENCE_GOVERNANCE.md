@@ -56,6 +56,10 @@ This summary must not be interpreted as an ordering constraint. In particular,
   `public_release=passed` additionally requires a durably published artifact
   bound to a separate registration result; candidate generation never mutates
   the capability registry.
+- Project 1 `v0.1.0` satisfies this software-only release axis through the
+  immutable GitHub release and the compact, re-fetchable evidence under
+  `public_release_evidence/v0.1.0/`. The badge does not assert held-out
+  benchmark success, external review, or named-material validation.
 - Novel material-specific physics claims require full support, a
   `novel_material_specific` claim class, passed CAS/analytic/assertion evidence,
   and passed external adjudication. A review-only route remains candidate.
@@ -71,7 +75,10 @@ and executable literature reproduction. Exact literature claims are separated
 as `exact_coefficient`, `exact_normalized`, or `boundary_conditioned_exact`;
 `structural_alignment` cannot promote a coefficient claim. Benchmark cases are
 registered but the held-out v1.0 benchmark has not passed. External review is
-pending, and public-release evidence is missing. See
+pending. Public software-release evidence is passed for all shipped routes;
+the seven full routes derive `released`, while scaffold/review-only routes stay
+`candidate` because release evidence does not replace missing physics
+evidence. See
 [`CORE3_CROSS_ENGINE_PROTOCOL.md`](CORE3_CROSS_ENGINE_PROTOCOL.md) and
 [`EXTENDED_CROSS_ENGINE_PROTOCOL.md`](EXTENDED_CROSS_ENGINE_PROTOCOL.md), and
 [`EXTENDED_LITERATURE_REPRODUCTION_PROTOCOL.md`](EXTENDED_LITERATURE_REPRODUCTION_PROTOCOL.md).

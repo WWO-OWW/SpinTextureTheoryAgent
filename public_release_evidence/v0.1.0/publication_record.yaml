@@ -1,0 +1,21 @@
+schema_version: 1.0.0
+status: published
+provider: github_release
+artifact_url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/v0.1.0/project1_v0.1.0_rc04_distribution01.tar.gz
+immutable_identifier: github:WWO-OWW/SpinTextureTheoryAgent@v0.1.0
+release_tag: v0.1.0
+published_at: '2026-07-27T06:50:40Z'
+publisher: WWO-OWW
+expected_archive:
+  filename: project1_v0.1.0_rc04_distribution01.tar.gz
+  sha256: f42cde4eeb776d39c1f0168e279571e8de887e4028ea22ec7e54bdbd4b74579e
+attestation:
+  exact_archive_uploaded: true
+  immutable_reference: true
+  provider_record_public: true
+claim_boundaries:
+  paper_benchmark_result_claimed: false
+  held_out_evidence_claimed: false
+  external_review_claimed: false
+  named_material_validation_claimed: false
+  registry_mutated_before_remote_verification: false
