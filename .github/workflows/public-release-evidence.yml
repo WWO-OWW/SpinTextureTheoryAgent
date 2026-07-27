@@ -35,11 +35,8 @@ jobs:
             --require-valid
           cd public_collection_evidence/v1/round_01
           sha256sum --check CHECKSUMS.sha256
-      - name: Run operator-ledger and outreach regressions
-        run: |
-          PYTHONPATH=src python -m pytest -q \
-            tests/test_benchmark_operator.py \
-            tests/test_benchmark_outreach.py
+      - name: Run compact public test matrix
+        run: PYTHONPATH=src python -m pytest -q
       - name: Verify installed operator tooling against public contracts
         run: |
           python -m spintexture_agent.cli benchmark-operator-ledger gate \

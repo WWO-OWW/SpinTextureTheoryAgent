@@ -262,6 +262,9 @@ Keep invitation/return working ledgers outside the repository. Use the
 only after durable publication verification. Role-specific no-send drafts are
 available through the verified
 [Round-01 outreach handoff](docs/BENCHMARK_OUTREACH_HANDOFF.md).
+The compact GitHub snapshot and full research tree intentionally expose
+different test fixtures; see the
+[public test matrix](docs/PUBLIC_TEST_MATRIX.md) for honest pass/skip semantics.
 
 There is deliberately no automatic decrypt or manifest-merge command. Completed
 handoffs contain private gold and must remain outside the development repository.

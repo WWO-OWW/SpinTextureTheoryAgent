@@ -37,4 +37,4 @@ spintexture_agent = [
 line-length = 100
 
 [tool.pytest.ini_options]
-pythonpath = ["."]
+pythonpath = ["src"]
