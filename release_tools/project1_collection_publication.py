@@ -518,6 +518,49 @@ def _validate_publication_record(
         )
 
 
+def verify_publication_record(
+    publication_record: str | Path,
+    collection_dir: str | Path = DEFAULT_COLLECTION_RELEASE,
+) -> dict[str, Any]:
+    record_path = _project_path(publication_record).resolve()
+    collection = _project_path(collection_dir).resolve()
+    issues: list[str] = []
+    record: dict[str, Any] = {}
+    try:
+        _, source_verification = _verify_source_collection(collection)
+        source_assets = _collection_assets(collection)
+        manifest = {
+            "assets": {
+                key: {
+                    "sha256": _sha256(source_assets[key]),
+                    "size_bytes": source_assets[key].stat().st_size,
+                }
+                for key in ASSET_KEYS
+            }
+        }
+        record = _load_yaml(record_path)
+        _validate_publication_record(record, manifest)
+    except (FileNotFoundError, KeyError, OSError, TypeError, ValueError) as exc:
+        source_verification = {}
+        issues.append(f"collection publication record verification failed: {exc}")
+    valid = not issues
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "status": "pass" if valid else "fail",
+        "publication_record_valid": valid,
+        "remote_publication_verified": False,
+        "eligible_for_collection_invitation_launch": False,
+        "collection_id": COLLECTION_ID,
+        "provider": record.get("provider"),
+        "immutable_identifier": record.get("immutable_identifier"),
+        "source_collection_verification": source_verification,
+        "participant_identity_count": 0,
+        "submitted_case_count": 0,
+        "human_rating_count": 0,
+        "issues": issues,
+    }
+
+
 def verify_remote(
     handoff_dir: str | Path,
     publication_record: str | Path,
@@ -935,6 +978,10 @@ def build_parser() -> argparse.ArgumentParser:
     handoff = sub.add_parser("verify-handoff")
     handoff.add_argument("--handoff", required=True)
     handoff.add_argument("--require-ready", action="store_true")
+    record = sub.add_parser("verify-record")
+    record.add_argument("--record", required=True)
+    record.add_argument("--collection", default=str(DEFAULT_COLLECTION_RELEASE))
+    record.add_argument("--require-valid", action="store_true")
     remote = sub.add_parser("verify-remote")
     remote.add_argument("--handoff", required=True)
     remote.add_argument("--record", required=True)
@@ -961,6 +1008,11 @@ def main() -> None:
     elif args.command == "verify-handoff":
         result = verify_handoff(args.handoff)
         if args.require_ready and not result["handoff_ready"]:
+            _print(result)
+            raise SystemExit(1)
+    elif args.command == "verify-record":
+        result = verify_publication_record(args.record, args.collection)
+        if args.require_valid and not result["publication_record_valid"]:
             _print(result)
             raise SystemExit(1)
     elif args.command == "verify-remote":

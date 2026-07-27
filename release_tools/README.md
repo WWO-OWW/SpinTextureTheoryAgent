@@ -80,9 +80,13 @@ release. Never attach them to or recreate `v0.1.0`. Complete a copy of
 remote asset:
 
 ```bash
+python release_tools/project1_collection_publication.py verify-record \
+  --record public_collection_evidence/v1/round_01/publication_record.yaml \
+  --require-valid
+
 python release_tools/project1_collection_publication.py verify-remote \
   --handoff analysis/collection_publication_handoffs/project1_benchmark_v1_round01_publication01 \
-  --record analysis/collection_publication_records/project1_benchmark_v1_round01_github01.yaml \
+  --record public_collection_evidence/v1/round_01/publication_record.yaml \
   --out analysis/collection_public_release_verifications/project1_benchmark_v1_round01_github01 \
   --require-pass
 

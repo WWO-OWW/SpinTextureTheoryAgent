@@ -1,0 +1,37 @@
+schema_version: 1.0.0
+status: published
+provider: github_release
+repository: WWO-OWW/SpinTextureTheoryAgent
+release_tag: benchmark-collection-v1-round-01
+immutable_identifier: github:WWO-OWW/SpinTextureTheoryAgent@benchmark-collection-v1-round-01
+published_at: '2026-07-27T13:43:29Z'
+publisher: WWO-OWW
+assets:
+  archive:
+    filename: spintexture_benchmark_v1_external_collection_round_01.zip
+    url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/benchmark-collection-v1-round-01/spintexture_benchmark_v1_external_collection_round_01.zip
+    sha256: 2a41a41d7f7f50b120684168cbdc14277765aea98aabb9cec96202fc91a09b87
+    size_bytes: 71096
+  release_index:
+    filename: release_index.yaml
+    url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/benchmark-collection-v1-round-01/release_index.yaml
+    sha256: 5413c9a229d6962a08b10a1bff777f4fae0ddeac01c526b333725b1331065d64
+    size_bytes: 4398
+  release_index_digest:
+    filename: release_index.sha256
+    url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/benchmark-collection-v1-round-01/release_index.sha256
+    sha256: d34df28255a443a07c127b18cfbef07c001bba603ca1b75dcd4bc0db520f1fec
+    size_bytes: 85
+attestation:
+  dedicated_collection_release: true
+  all_exact_assets_uploaded: true
+  provider_record_public: true
+  software_v0_1_0_untouched: true
+claim_boundaries:
+  held_out_cases_collected: false
+  readability_cases_collected: false
+  participant_identities_recorded: false
+  human_ratings_recorded: false
+  benchmark_performance_claimed: false
+  external_review_claimed: false
+  software_v0_1_0_release_mutated: false

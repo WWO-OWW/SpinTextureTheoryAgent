@@ -1,0 +1,48 @@
+schema_version: 1.0.0
+evidence_type: blank_external_collection_publication
+status: passed
+collection_id: spintexture_benchmark_v1_external_collection_round_01
+release:
+  provider: github_release
+  repository: WWO-OWW/SpinTextureTheoryAgent
+  tag: benchmark-collection-v1-round-01
+  tag_object_sha: b4bfdceba9f26b9f891eb55dddaef07037096f4a
+  target_commit_sha: a93506f59dfa70862397023b3a313fbbb4603197
+  url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/tag/benchmark-collection-v1-round-01
+  published_at: '2026-07-27T13:43:29Z'
+publication_record:
+  path: publication_record.yaml
+  sha256: c59d834fabe22fe1ed8790275aa51225eb60f4bd5757d7c04e9bd63db122a548
+remote_verification:
+  retrieved_at: '2026-07-27T21:44:18+08:00'
+  result_sha256: 535f365bebd27cf33a66617dd80f89bd1fe4a073449010c2d9fa56fe0dc9ccd6
+  handoff_manifest_sha256: 39513538a1e7af8e49453e8502087a10658ee40ecb4b8c8b0ff7a1fbfaf8eb9a
+  remote_publication_verified: true
+  eligible_for_collection_invitation_launch: true
+  byte_for_byte_reconstruction: true
+  payload_file_count: 24
+  network_mode: rfc2544_https_proxy
+public_ci:
+  workflow: Public release evidence
+  run_id: 30250237344
+  run_url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/actions/runs/30250237344
+  commit_sha: a93506f59dfa70862397023b3a313fbbb4603197
+  conclusion: success
+software_release_separation:
+  tag: v0.1.0
+  tag_object_sha: c8aad31a3e4c5da3cfec98601832de7bfa1c0d9e
+  target_commit_sha: 34e71bba3257796758cb9d77af3eb29a3e0b2287
+  distribution_archive_sha256: f42cde4eeb776d39c1f0168e279571e8de887e4028ea22ec7e54bdbd4b74579e
+  unchanged: true
+participant_identity_count: 0
+submitted_case_count: 0
+human_rating_count: 0
+claim_boundaries:
+  held_out_cases_collected: false
+  readability_cases_collected: false
+  participant_identities_recorded: false
+  human_ratings_recorded: false
+  benchmark_performance_claimed: false
+  external_review_claimed: false
+  software_v0_1_0_release_mutated: false
+

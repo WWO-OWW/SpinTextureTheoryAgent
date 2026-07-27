@@ -243,6 +243,38 @@ def test_record_rejects_asset_url_mismatch(handoff):
         publication._validate_publication_record(record, manifest)
 
 
+def test_offline_record_verification_does_not_claim_remote_evidence(
+    handoff, tmp_path
+):
+    record_path = tmp_path / "record.yaml"
+    _write_yaml(record_path, _published_record(handoff))
+
+    result = publication.verify_publication_record(
+        record_path,
+        publication.DEFAULT_COLLECTION_RELEASE,
+    )
+
+    assert result["status"] == "pass"
+    assert result["publication_record_valid"]
+    assert not result["remote_publication_verified"]
+    assert not result["eligible_for_collection_invitation_launch"]
+
+
+def test_offline_record_verification_rejects_hash_drift(handoff, tmp_path):
+    record = _published_record(handoff)
+    record["assets"]["archive"]["sha256"] = "0" * 64
+    record_path = tmp_path / "record-drift.yaml"
+    _write_yaml(record_path, record)
+
+    result = publication.verify_publication_record(
+        record_path,
+        publication.DEFAULT_COLLECTION_RELEASE,
+    )
+
+    assert result["status"] == "fail"
+    assert not result["publication_record_valid"]
+
+
 def test_remote_verification_retains_and_rechecks_exact_assets(
     handoff, tmp_path, monkeypatch
 ):
