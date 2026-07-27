@@ -1,0 +1,88 @@
+schema_version: 1.0.0
+handoff_id: project1_benchmark_v1_round01_outreach01
+collection_id: spintexture_benchmark_v1_external_collection_round_01
+created_at: '2026-07-27T22:55:46+08:00'
+publication_binding:
+  immutable_identifier: github:WWO-OWW/SpinTextureTheoryAgent@benchmark-collection-v1-round-01
+  publication_record_sha256: c59d834fabe22fe1ed8790275aa51225eb60f4bd5757d7c04e9bd63db122a548
+  publication_evidence_sha256: d5db30c29944f9a7f5412159c8e3833420d896beeff3d500cc957be48ef786f2
+  release_page_url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/tag/benchmark-collection-v1-round-01
+artifacts:
+  publication_record:
+    path: bindings/publication_record.yaml
+    sha256: c59d834fabe22fe1ed8790275aa51225eb60f4bd5757d7c04e9bd63db122a548
+    size_bytes: 1648
+    category: publication_binding
+  publication_evidence:
+    path: bindings/publication_evidence.yaml
+    sha256: d5db30c29944f9a7f5412159c8e3833420d896beeff3d500cc957be48ef786f2
+    size_bytes: 1955
+    category: publication_binding
+  collection_plan:
+    path: bindings/collection_plan.yaml
+    sha256: 42dd34f382dbb84a6795184d75a78adc071fba669eee408e43acac29f86ac619
+    size_bytes: 7061
+    category: collection_contract
+  ledger_protocol:
+    path: bindings/PRIVATE_LEDGER_PROTOCOL.md
+    sha256: e458943cc5831b08761437ea81e626efdb8a4388fac5399ec920cae68b97c449
+    size_bytes: 4579
+    category: operator_protocol
+  source_operator_instructions:
+    path: bindings/SOURCE_OPERATOR_INSTRUCTIONS.md
+    sha256: cd5be69a36a33f20fa4b609826102182094396daf39d0996ff6b102385f89106
+    size_bytes: 2584
+    category: collection_contract
+  outreach_plan:
+    path: outreach_plan.yaml
+    sha256: 22b86229ad1d93d3bd0f878a107f02ae8c75efcffdfca1f959dcf7df9326106f
+    size_bytes: 5578
+    category: outreach_contract
+  contributor_draft:
+    path: drafts/case_contributor_invitation.md
+    sha256: 978cece5aeb718bec23b93e711c21dea4c157155f6326d0c9c68d2b0bcefb286
+    size_bytes: 1221
+    category: no_send_draft
+  custodian_draft:
+    path: drafts/gold_custodian_invitation.md
+    sha256: 397e4033573013764f1e13f0711e93abc6f243e33109a681ffbe90ee33cc73f8
+    size_bytes: 1191
+    category: no_send_draft
+  rater_draft:
+    path: drafts/readability_rater_invitation.md
+    sha256: 089a47b1091e4a4b242ec8a1b06d7ab196dbfdd085eea3c8a82e8d4f3e9a654f
+    size_bytes: 1211
+    category: later_no_send_draft
+  operator_checklist:
+    path: OPERATOR_CHECKLIST.md
+    sha256: e974485c9c5ae301c82ae2980f079735454eec40c2e405887ab7c86a042b77af
+    size_bytes: 1023
+    category: operator_checklist
+  readme:
+    path: README.md
+    sha256: e34b73510776e4c101d642788694235ae71819f7dfb501cf6e4a814a93cb856a
+    size_bytes: 559
+    category: documentation
+state:
+  handoff_ready: true
+  no_send_drafts: true
+  messages_sent: false
+  participation_confirmed: false
+  returns_received: false
+counts:
+  participant_identities: 0
+  invitation_events: 0
+  submitted_cases: 0
+  human_ratings: 0
+claim_boundaries:
+  held_out_cases_collected: false
+  readability_cases_collected: false
+  participant_identities_recorded: false
+  human_ratings_recorded: false
+  benchmark_performance_claimed: false
+  external_review_claimed: false
+  software_v0_1_0_release_mutated: false
+  outreach_sent: false
+  invitation_event_recorded: false
+  participation_confirmed: false
+  returned_packet_received: false

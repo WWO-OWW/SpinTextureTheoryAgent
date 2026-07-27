@@ -1,0 +1,28 @@
+# TEMPLATE ONLY. Record only a received sealed packet; do not place plaintext gold here.
+schema_version: 1.0.0
+event_id: REPLACE_WITH_UNIQUE_EVENT_ID
+event_type: sealed_return_received
+invitation_id: REPLACE_WITH_ACCEPTED_INVITATION_ID
+operator_id: REPLACE_WITH_PRIVATE_OPERATOR_ID
+effective_at: REPLACE_WITH_TIMEZONE_AWARE_RECEIPT_TIMESTAMP
+recorded_at: REPLACE_WITH_TIMEZONE_AWARE_RECORD_TIMESTAMP
+custodian:
+  private_participant_id: REPLACE_WITH_PRIVATE_CUSTODIAN_ID
+  public_participant_id: REPLACE_WITH_RANDOM_PUBLIC_PSEUDONYM
+  role: custodian
+  name: REPLACE_WITH_VERIFIED_NAME
+  affiliation: REPLACE_WITH_VERIFIED_AFFILIATION
+  contact: REPLACE_WITH_PRIVATE_CONTACT
+  independent_of_project_development: true
+  conflicts_disclosed: []
+returned_packet:
+  path: incoming_returns/REPLACE_WITH_SEALED_PACKET_FILENAME.zip
+  sha256: REPLACE_WITH_64_LOWERCASE_HEX_SHA256
+  size_bytes: 0
+submitted_case_ids:
+  - REPLACE_WITH_CASE_ID
+confirmations:
+  real_world_event_occurred: false
+  identity_checked_by_operator: false
+  private_contact_kept_out_of_repository: false
+  tool_did_not_send_message: false

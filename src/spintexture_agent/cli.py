@@ -32,6 +32,20 @@ from .benchmark_materialization import (
     verify_custodian_handoff,
     verify_system_freeze_package,
 )
+from .benchmark_operator import (
+    DEFAULT_PUBLICATION_EVIDENCE,
+    DEFAULT_PUBLICATION_RECORD,
+    initialize_private_ledger,
+    plan_or_record_event,
+    verify_private_ledger,
+    verify_publication_gate,
+)
+from .benchmark_outreach import (
+    DEFAULT_HANDOFF as DEFAULT_OUTREACH_HANDOFF,
+    DEFAULT_HANDOFF_ID as DEFAULT_OUTREACH_HANDOFF_ID,
+    create_outreach_handoff,
+    verify_outreach_handoff,
+)
 from .capabilities import CapabilityRegistry, render_claim_evidence_matrix
 from .checker import check_task
 from .cross_engine import run_cross_engine_suite, verify_cross_engine_result
@@ -377,6 +391,145 @@ def cmd_benchmark_collection_verify(args: argparse.Namespace) -> None:
             console.print("[bold red]Issues:[/] " + "; ".join(result.issues))
     if args.require_ready and not result.ready_for_distribution:
         raise SystemExit("Benchmark collection release is not ready for distribution")
+
+
+def _operator_result(result: dict, *, as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(result, indent=2))
+        return
+    console.print(f"[bold]Status:[/] {result['status']}")
+    for field in (
+        "operation",
+        "ledger_id",
+        "event_id",
+        "event_type",
+        "invitation_id",
+        "resulting_state",
+        "preview_sha256",
+        "head_snapshot_manifest_sha256",
+    ):
+        if result.get(field) is not None:
+            console.print(f"[bold]{field}:[/] {result[field]}")
+    for field in (
+        "write_performed",
+        "publication_gate_passed",
+        "ledger_valid",
+        "participant_identity_count",
+        "invitation_entry_count",
+        "submitted_case_count",
+        "human_rating_count",
+        "real_manifests_modified",
+    ):
+        if field in result:
+            console.print(f"[bold]{field}:[/] {result[field]}")
+    if result.get("issues"):
+        console.print("[bold red]Issues:[/] " + "; ".join(result["issues"]))
+
+
+def cmd_benchmark_operator_gate(args: argparse.Namespace) -> None:
+    result = verify_publication_gate(
+        args.publication_evidence,
+        args.publication_record,
+        args.collection_release,
+    )
+    _operator_result(result, as_json=args.json)
+    if args.require_pass and not result["publication_gate_passed"]:
+        raise SystemExit("Round-01 publication gate did not pass")
+
+
+def cmd_benchmark_operator_initialize(args: argparse.Namespace) -> None:
+    try:
+        result = initialize_private_ledger(
+            args.out,
+            ledger_id=args.ledger_id,
+            operator_id=args.operator_id,
+            created_at=args.created_at,
+            publication_evidence=args.publication_evidence,
+            publication_record=args.publication_record,
+            collection_release=args.collection_release,
+            commit=args.commit,
+            preview_sha256=args.preview_sha256,
+        )
+    except (FileExistsError, FileNotFoundError, ValueError) as exc:
+        raise SystemExit(f"Private operator-ledger initialization failed: {exc}") from exc
+    _operator_result(result, as_json=args.json)
+
+
+def cmd_benchmark_operator_record(args: argparse.Namespace) -> None:
+    try:
+        result = plan_or_record_event(
+            args.ledger,
+            args.request,
+            commit=args.commit,
+            preview_sha256=args.preview_sha256,
+            confirm_real_event=args.confirm_real_event,
+        )
+    except (FileExistsError, FileNotFoundError, ValueError) as exc:
+        raise SystemExit(f"Private operator event failed: {exc}") from exc
+    _operator_result(result, as_json=args.json)
+
+
+def cmd_benchmark_operator_verify(args: argparse.Namespace) -> None:
+    try:
+        result = verify_private_ledger(args.ledger)
+    except (FileNotFoundError, ValueError) as exc:
+        raise SystemExit(f"Private operator-ledger verification failed: {exc}") from exc
+    _operator_result(result, as_json=args.json)
+    if args.require_valid and not result["ledger_valid"]:
+        raise SystemExit("Private operator ledger did not pass verification")
+
+
+def _outreach_result(result: dict, *, as_json: bool) -> None:
+    if as_json:
+        console.print_json(json.dumps(result))
+        return
+    color = "green" if result.get("handoff_ready") else "red"
+    console.print(f"[bold {color}]Outreach handoff:[/] {result.get('status')}")
+    for field in (
+        "handoff_id",
+        "manifest_sha256",
+        "outreach_opening_at",
+        "messages_sent",
+        "participation_confirmed",
+        "participant_identity_count",
+        "invitation_event_count",
+        "submitted_case_count",
+        "human_rating_count",
+    ):
+        if field in result:
+            console.print(f"[bold]{field}:[/] {result[field]}")
+    if result.get("issues"):
+        console.print("[bold red]Issues:[/] " + "; ".join(result["issues"]))
+
+
+def cmd_benchmark_outreach_create(args: argparse.Namespace) -> None:
+    try:
+        result = create_outreach_handoff(
+            args.out,
+            handoff_id=args.handoff_id,
+            created_at=args.created_at,
+            publication_evidence=args.publication_evidence,
+            publication_record=args.publication_record,
+            collection_release=args.collection_release,
+            ledger_protocol=args.ledger_protocol,
+        )
+    except (FileExistsError, FileNotFoundError, ValueError) as exc:
+        raise SystemExit(f"Outreach handoff creation failed: {exc}") from exc
+    _outreach_result(result, as_json=args.json)
+
+
+def cmd_benchmark_outreach_verify(args: argparse.Namespace) -> None:
+    try:
+        result = verify_outreach_handoff(
+            args.handoff,
+            collection_release=args.collection_release,
+            ledger_protocol=args.ledger_protocol,
+        )
+    except (FileNotFoundError, ValueError) as exc:
+        raise SystemExit(f"Outreach handoff verification failed: {exc}") from exc
+    _outreach_result(result, as_json=args.json)
+    if args.require_ready and not result["handoff_ready"]:
+        raise SystemExit("Outreach handoff did not pass verification")
 
 
 def cmd_release_candidate_create(args: argparse.Namespace) -> None:
@@ -1191,6 +1344,115 @@ def build_parser() -> argparse.ArgumentParser:
     collection_verify.add_argument("--json", action="store_true")
     collection_verify.add_argument("--require-ready", action="store_true")
     collection_verify.set_defaults(func=cmd_benchmark_collection_verify)
+
+    operator_ledger = sub.add_parser(
+        "benchmark-operator-ledger",
+        help="Verify publication and maintain a private append-only invitation ledger",
+    )
+    operator_sub = operator_ledger.add_subparsers(required=True)
+    operator_gate = operator_sub.add_parser(
+        "gate",
+        help="Verify durable Round-01 publication before creating a private ledger",
+    )
+    operator_gate.add_argument(
+        "--publication-evidence", default=str(DEFAULT_PUBLICATION_EVIDENCE)
+    )
+    operator_gate.add_argument(
+        "--publication-record", default=str(DEFAULT_PUBLICATION_RECORD)
+    )
+    operator_gate.add_argument(
+        "--collection-release", default="benchmark_collection_releases/v1/round_01"
+    )
+    operator_gate.add_argument("--json", action="store_true")
+    operator_gate.add_argument("--require-pass", action="store_true")
+    operator_gate.set_defaults(func=cmd_benchmark_operator_gate)
+
+    operator_initialize = operator_sub.add_parser(
+        "initialize",
+        help="Preview or initialize a non-overwriting private working ledger",
+    )
+    operator_initialize.add_argument("--out", required=True)
+    operator_initialize.add_argument("--ledger-id", required=True)
+    operator_initialize.add_argument("--operator-id", required=True)
+    operator_initialize.add_argument("--created-at", required=True)
+    operator_initialize.add_argument(
+        "--publication-evidence", default=str(DEFAULT_PUBLICATION_EVIDENCE)
+    )
+    operator_initialize.add_argument(
+        "--publication-record", default=str(DEFAULT_PUBLICATION_RECORD)
+    )
+    operator_initialize.add_argument(
+        "--collection-release", default="benchmark_collection_releases/v1/round_01"
+    )
+    operator_initialize.add_argument("--commit", action="store_true")
+    operator_initialize.add_argument("--preview-sha256", default=None)
+    operator_initialize.add_argument("--json", action="store_true")
+    operator_initialize.set_defaults(func=cmd_benchmark_operator_initialize)
+
+    operator_record = operator_sub.add_parser(
+        "record",
+        help="Preview or append an explicitly confirmed real invitation event",
+    )
+    operator_record.add_argument("--ledger", required=True)
+    operator_record.add_argument("--request", required=True)
+    operator_record.add_argument("--commit", action="store_true")
+    operator_record.add_argument("--preview-sha256", default=None)
+    operator_record.add_argument("--confirm-real-event", action="store_true")
+    operator_record.add_argument("--json", action="store_true")
+    operator_record.set_defaults(func=cmd_benchmark_operator_record)
+
+    operator_verify = operator_sub.add_parser(
+        "verify",
+        help="Verify permissions, hashes, replay, and publication binding",
+    )
+    operator_verify.add_argument("--ledger", required=True)
+    operator_verify.add_argument("--json", action="store_true")
+    operator_verify.add_argument("--require-valid", action="store_true")
+    operator_verify.set_defaults(func=cmd_benchmark_operator_verify)
+
+    outreach_handoff = sub.add_parser(
+        "benchmark-outreach-handoff",
+        help="Create or verify the public-data-only Round-01 no-send outreach handoff",
+    )
+    outreach_sub = outreach_handoff.add_subparsers(required=True)
+    outreach_create = outreach_sub.add_parser(
+        "create",
+        help="Create a non-overwriting operator handoff with no-send role drafts",
+    )
+    outreach_create.add_argument("--out", default=str(DEFAULT_OUTREACH_HANDOFF))
+    outreach_create.add_argument(
+        "--handoff-id", default=DEFAULT_OUTREACH_HANDOFF_ID
+    )
+    outreach_create.add_argument("--created-at", default=None)
+    outreach_create.add_argument(
+        "--publication-evidence", default=str(DEFAULT_PUBLICATION_EVIDENCE)
+    )
+    outreach_create.add_argument(
+        "--publication-record", default=str(DEFAULT_PUBLICATION_RECORD)
+    )
+    outreach_create.add_argument(
+        "--collection-release", default="benchmark_collection_releases/v1/round_01"
+    )
+    outreach_create.add_argument(
+        "--ledger-protocol", default="docs/BENCHMARK_PRIVATE_OPERATOR_LEDGER.md"
+    )
+    outreach_create.add_argument("--json", action="store_true")
+    outreach_create.set_defaults(func=cmd_benchmark_outreach_create)
+
+    outreach_verify = outreach_sub.add_parser(
+        "verify",
+        help="Verify hashes, immutable publication bindings, privacy, and claim boundaries",
+    )
+    outreach_verify.add_argument("--handoff", required=True)
+    outreach_verify.add_argument(
+        "--collection-release", default="benchmark_collection_releases/v1/round_01"
+    )
+    outreach_verify.add_argument(
+        "--ledger-protocol", default="docs/BENCHMARK_PRIVATE_OPERATOR_LEDGER.md"
+    )
+    outreach_verify.add_argument("--json", action="store_true")
+    outreach_verify.add_argument("--require-ready", action="store_true")
+    outreach_verify.set_defaults(func=cmd_benchmark_outreach_verify)
 
     release_candidate = sub.add_parser(
         "release-candidate",

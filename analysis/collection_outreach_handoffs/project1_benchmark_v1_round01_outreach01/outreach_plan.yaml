@@ -1,0 +1,144 @@
+schema_version: 1.0.0
+collection_id: spintexture_benchmark_v1_external_collection_round_01
+handoff_id: project1_benchmark_v1_round01_outreach01
+plan_status: no_send_operator_handoff
+created_at: '2026-07-27T22:55:46+08:00'
+outreach_opening_at: '2026-08-03T00:00:00+08:00'
+deadlines:
+  invitations_open: '2026-08-03T00:00:00+08:00'
+  acceptance_due: '2026-08-17T23:59:59+08:00'
+  sealed_submission_due: '2026-09-30T23:59:59+08:00'
+  custody_confirmation_due: '2026-10-14T23:59:59+08:00'
+  intake_review_close: '2026-10-21T23:59:59+08:00'
+publication:
+  immutable_identifier: github:WWO-OWW/SpinTextureTheoryAgent@benchmark-collection-v1-round-01
+  release_page_url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/tag/benchmark-collection-v1-round-01
+  assets:
+    archive:
+      filename: spintexture_benchmark_v1_external_collection_round_01.zip
+      url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/benchmark-collection-v1-round-01/spintexture_benchmark_v1_external_collection_round_01.zip
+      sha256: 2a41a41d7f7f50b120684168cbdc14277765aea98aabb9cec96202fc91a09b87
+      size_bytes: 71096
+    release_index:
+      filename: release_index.yaml
+      url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/benchmark-collection-v1-round-01/release_index.yaml
+      sha256: 5413c9a229d6962a08b10a1bff777f4fae0ddeac01c526b333725b1331065d64
+      size_bytes: 4398
+    release_index_digest:
+      filename: release_index.sha256
+      url: https://github.com/WWO-OWW/SpinTextureTheoryAgent/releases/download/benchmark-collection-v1-round-01/release_index.sha256
+      sha256: d34df28255a443a07c127b18cfbef07c001bba603ca1b75dcd4bc0db520f1fec
+      size_bytes: 85
+targets:
+  held_out:
+    target_cases: 7
+    eligible_routes:
+    - route_id: afm_skyrmion_sot_full
+      material: collinear_antiferromagnet
+      texture: skyrmion
+      drive: spin_orbit_torque
+      geometry: thin_film_2d
+      support_level: full_derivation
+      held_out_target_cases: 1
+    - route_id: afm_stripe_sot_full
+      material: collinear_antiferromagnet
+      texture: stripe_domain
+      drive: spin_orbit_torque
+      geometry: thin_film_2d
+      support_level: full_derivation
+      held_out_target_cases: 1
+    - route_id: fm_antiskyrmion_sot_full
+      material: ferromagnet
+      texture: antiskyrmion
+      drive: spin_orbit_torque
+      geometry: thin_film_2d
+      support_level: full_derivation
+      held_out_target_cases: 1
+    - route_id: fm_bimeron_topology_full
+      material: ferromagnet
+      texture: bimeron
+      drive: null
+      geometry: thin_film_2d
+      support_level: full_derivation
+      held_out_target_cases: 1
+    - route_id: fm_meron_topology_full
+      material: ferromagnet
+      texture: meron
+      drive: null
+      geometry: thin_film_2d
+      support_level: full_derivation
+      held_out_target_cases: 1
+    - route_id: fm_skyrmion_sot_full
+      material: ferromagnet
+      texture: skyrmion
+      drive: spin_orbit_torque
+      geometry: thin_film_2d
+      support_level: full_derivation
+      held_out_target_cases: 1
+    - route_id: fm_vortex_topology_full
+      material: ferromagnet
+      texture: vortex
+      drive: null
+      geometry: thin_film_2d
+      support_level: full_derivation
+      held_out_target_cases: 1
+  readability:
+    target_cases: 6
+    audiences:
+    - audience_id: experimental_magnetism_researcher
+      audience_description: Experimental magnetism researcher without specialist derivation training
+      target_cases: 2
+      minimum_independent_raters_per_case: 2
+    - audience_id: magnetic_imaging_or_device_researcher
+      audience_description: Magnetic imaging or spintronic-device researcher using theory outputs
+      target_cases: 2
+      minimum_independent_raters_per_case: 2
+    - audience_id: physics_graduate_reader_outside_texture_theory
+      audience_description: Physics graduate reader outside magnetic-texture theory
+      target_cases: 2
+      minimum_independent_raters_per_case: 2
+role_contract:
+  project_developers_may_author_independent_cases: false
+  case_author_must_be_independent_of_project_development: true
+  gold_custodian_must_be_independent_of_project_development: true
+  case_author_and_gold_custodian_must_differ: true
+  development_team_may_access_plaintext_gold_before_evaluation: false
+  identities_must_be_blank_at_launch: true
+source_eligibility:
+  allowed_source_types:
+  - primary_literature
+  - external_contribution
+  stable_source_snapshot_required: true
+  citation_must_resolve: true
+  exact_equation_or_page_locators_required: true
+  source_must_not_have_been_used_in_project_development: true
+  source_must_support_declared_gold_scope: true
+  scientific_relevance_review_required: true
+  unverifiable_or_retracted_sources_eligible: false
+private_ledger:
+  protocol_artifact: bindings/PRIVATE_LEDGER_PROTOCOL.md
+  required_after_real_operator_event: true
+  tool_sends_messages: false
+state:
+  drafts_only: true
+  messages_sent: false
+  participation_confirmed: false
+  returns_received: false
+  readability_study_open: false
+counts:
+  participant_identities: 0
+  invitation_events: 0
+  submitted_cases: 0
+  human_ratings: 0
+claim_boundaries:
+  held_out_cases_collected: false
+  readability_cases_collected: false
+  participant_identities_recorded: false
+  human_ratings_recorded: false
+  benchmark_performance_claimed: false
+  external_review_claimed: false
+  software_v0_1_0_release_mutated: false
+  outreach_sent: false
+  invitation_event_recorded: false
+  participation_confirmed: false
+  returned_packet_received: false

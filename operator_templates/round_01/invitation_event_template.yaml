@@ -1,0 +1,25 @@
+# TEMPLATE ONLY. Replace every REPLACE_* field after a real invitation was sent.
+# All confirmations must remain false until the statements are factually true.
+schema_version: 1.0.0
+event_id: REPLACE_WITH_UNIQUE_EVENT_ID
+event_type: invitation_sent
+invitation_id: REPLACE_WITH_INVITATION_ID
+operator_id: REPLACE_WITH_PRIVATE_OPERATOR_ID
+effective_at: REPLACE_WITH_TIMEZONE_AWARE_SEND_TIMESTAMP
+recorded_at: REPLACE_WITH_TIMEZONE_AWARE_RECORD_TIMESTAMP
+target_partition: held_out_supported
+target_route_id: REPLACE_WITH_FROZEN_ROUTE_ID
+participant:
+  private_participant_id: REPLACE_WITH_PRIVATE_CONTRIBUTOR_ID
+  public_participant_id: REPLACE_WITH_RANDOM_PUBLIC_PSEUDONYM
+  role: contributor
+  name: REPLACE_WITH_VERIFIED_NAME
+  affiliation: REPLACE_WITH_VERIFIED_AFFILIATION
+  contact: REPLACE_WITH_PRIVATE_CONTACT
+  independent_of_project_development: true
+  conflicts_disclosed: []
+confirmations:
+  real_world_event_occurred: false
+  identity_checked_by_operator: false
+  private_contact_kept_out_of_repository: false
+  tool_did_not_send_message: false

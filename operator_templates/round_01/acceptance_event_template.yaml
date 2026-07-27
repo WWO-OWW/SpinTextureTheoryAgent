@@ -1,0 +1,13 @@
+# TEMPLATE ONLY. Complete this only after an invited contributor has accepted.
+schema_version: 1.0.0
+event_id: REPLACE_WITH_UNIQUE_EVENT_ID
+event_type: acceptance_received
+invitation_id: REPLACE_WITH_EXISTING_INVITATION_ID
+operator_id: REPLACE_WITH_PRIVATE_OPERATOR_ID
+effective_at: REPLACE_WITH_TIMEZONE_AWARE_ACCEPTANCE_TIMESTAMP
+recorded_at: REPLACE_WITH_TIMEZONE_AWARE_RECORD_TIMESTAMP
+confirmations:
+  real_world_event_occurred: false
+  identity_checked_by_operator: false
+  private_contact_kept_out_of_repository: false
+  tool_did_not_send_message: false

@@ -35,6 +35,23 @@ jobs:
             --require-valid
           cd public_collection_evidence/v1/round_01
           sha256sum --check CHECKSUMS.sha256
+      - name: Run operator-ledger and outreach regressions
+        run: |
+          PYTHONPATH=src python -m pytest -q \
+            tests/test_benchmark_operator.py \
+            tests/test_benchmark_outreach.py
+      - name: Verify installed operator tooling against public contracts
+        run: |
+          python -m spintexture_agent.cli benchmark-operator-ledger gate \
+            --publication-evidence "$GITHUB_WORKSPACE/public_collection_evidence/v1/round_01/publication_evidence.yaml" \
+            --publication-record "$GITHUB_WORKSPACE/public_collection_evidence/v1/round_01/publication_record.yaml" \
+            --collection-release "$GITHUB_WORKSPACE/benchmark_collection_releases/v1/round_01" \
+            --require-pass --json
+          python -m spintexture_agent.cli benchmark-outreach-handoff verify \
+            --handoff "$GITHUB_WORKSPACE/analysis/collection_outreach_handoffs/project1_benchmark_v1_round01_outreach01" \
+            --collection-release "$GITHUB_WORKSPACE/benchmark_collection_releases/v1/round_01" \
+            --ledger-protocol "$GITHUB_WORKSPACE/docs/BENCHMARK_PRIVATE_OPERATOR_LEDGER.md" \
+            --require-ready --json
       - name: Run portable CLI smoke checks
         run: |
           python -m spintexture_agent.cli validate configs/afm_stripe_sot.yaml

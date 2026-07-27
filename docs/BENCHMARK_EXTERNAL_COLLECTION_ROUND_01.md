@@ -99,6 +99,11 @@ requires a prior acceptance timestamp and a separate custodian identity.
 
 Working ledgers contain personal information and must remain outside the public
 repository. `benchmark_collection_working/` is ignored for this reason.
+Use the hash-chained, dry-run-first workflow in
+[`BENCHMARK_PRIVATE_OPERATOR_LEDGER.md`](BENCHMARK_PRIVATE_OPERATOR_LEDGER.md);
+do not edit the frozen release ledger or real benchmark manifests.
+Before outreach, verify the public-data-only, no-send operator package described
+in [`BENCHMARK_OUTREACH_HANDOFF.md`](BENCHMARK_OUTREACH_HANDOFF.md).
 
 ## Deadlines
 

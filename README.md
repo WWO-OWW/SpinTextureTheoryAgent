@@ -257,7 +257,11 @@ python -m spintexture_agent.cli benchmark-materialization registration-candidate
 ```
 
 The collection release contains no real identities, cases, ratings, or gold.
-Keep invitation/return working ledgers outside the repository.
+Keep invitation/return working ledgers outside the repository. Use the
+[private operator-ledger protocol](docs/BENCHMARK_PRIVATE_OPERATOR_LEDGER.md)
+only after durable publication verification. Role-specific no-send drafts are
+available through the verified
+[Round-01 outreach handoff](docs/BENCHMARK_OUTREACH_HANDOFF.md).
 
 There is deliberately no automatic decrypt or manifest-merge command. Completed
 handoffs contain private gold and must remain outside the development repository.
