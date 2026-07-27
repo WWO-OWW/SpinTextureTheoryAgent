@@ -1,0 +1,366 @@
+schema_version: "1.0.0"
+routes:
+  - route_id: afm_stripe_sot_full
+    evidence_card: evidence_cards/core3/A4_afm_stripe_sot.yaml
+    result_keys:
+      must_resolve:
+        - dmi_variational_regression
+        - domain_wall_ansatz
+        - ansatz_constraint_regression
+        - collective_metric_integrand
+        - metric_boundary_regression
+        - sot_boundary_regression
+        - collective_metric_matrix
+        - metric_matrix_regression
+        - collective_mass_matrix
+        - mass_matrix_regression
+        - collective_damping_matrix
+        - damping_matrix_regression
+        - single_wall_sot_generalized_force
+        - sot_force_regression
+        - literature_wall_source_residual
+        - literature_wall_target_residual
+        - literature_wall_transformed_residual
+        - literature_wall_mass_bridge_regression
+        - literature_wall_damping_bridge_regression
+        - literature_wall_force_bridge_regression
+        - literature_wall_exact_regression
+        - chain_sot_force
+        - wall_chain_stability_matrix
+        - stability_matrix_regression
+        - stripe_chain_equation
+        - chain_equation_regression
+        - alpha_limit_regression
+        - energy_density_dimension_regression
+        - translation_dimension_regression
+        - angle_dimension_regression
+      symbolic_by_design:
+        - collective_mass_matrix_definition
+        - collective_damping_matrix_definition
+      metadata:
+        - dmi_density_type
+        - dimension_contract
+    assertions:
+      dimension:
+        keys:
+          - energy_density_dimension_regression
+          - translation_dimension_regression
+          - angle_dimension_regression
+      sign:
+        keys:
+          - sot_force_regression
+          - literature_wall_force_bridge_regression
+      boundary:
+        keys:
+          - metric_boundary_regression
+          - sot_boundary_regression
+      limit:
+        keys: [alpha_limit_regression]
+    known_gaps: []
+
+  - route_id: fm_skyrmion_sot_full
+    evidence_card: evidence_cards/core3/B1_fm_skyrmion_sot.yaml
+    result_keys:
+      must_resolve:
+        - dmi_variational_regression
+        - skyrmion_ansatz
+        - topological_density
+        - topological_charge
+        - topological_charge_regression
+        - gyrotropic_angular_density
+        - gyrotropic_angular_density_expected
+        - gyrotropic_density_difference
+        - gyrotropic_density_regression
+        - dissipative_radial_integrand
+        - dissipative_density_regression
+        - sot_force_angular_density
+        - sot_force_density_regression
+        - field_like_translation_force
+        - field_like_boundary_regression
+        - sot_generalized_force
+        - gyrotropic_tensor
+        - gyrotropic_tensor_regression
+        - damping_tensor
+        - damping_tensor_regression
+        - thiele_equation
+        - thiele_equation_regression
+        - literature_thiele_source_residual
+        - literature_thiele_target_residual
+        - literature_thiele_transformed_residual
+        - literature_thiele_gyro_bridge_regression
+        - literature_thiele_damping_bridge_regression
+        - literature_thiele_force_bridge_regression
+        - literature_thiele_exact_regression
+        - alpha_limit_regression
+        - fm_energy_density_dimension_regression
+        - thiele_dimension_regression
+      symbolic_by_design:
+        - collective_dissipation_integral_definition
+        - sot_radial_integral_definition
+      metadata:
+        - dmi_density_type
+        - dimension_contract
+    assertions:
+      dimension:
+        keys:
+          - fm_energy_density_dimension_regression
+          - thiele_dimension_regression
+      sign:
+        keys:
+          - topological_charge_regression
+          - gyrotropic_density_regression
+          - gyrotropic_tensor_regression
+          - literature_thiele_gyro_bridge_regression
+      boundary:
+        keys: [field_like_boundary_regression]
+      limit:
+        keys: [alpha_limit_regression]
+    known_gaps: []
+
+  - route_id: afm_skyrmion_sot_full
+    evidence_card: evidence_cards/core3/B2_afm_skyrmion_sot.yaml
+    result_keys:
+      must_resolve:
+        - dmi_variational_regression
+        - skyrmion_ansatz
+        - topological_density
+        - topological_charge
+        - topological_charge_regression
+        - collective_metric_radial_integrand
+        - metric_density_regression
+        - collective_mass_matrix
+        - mass_matrix_regression
+        - collective_damping_matrix
+        - damping_matrix_regression
+        - damping_like_force_angular_density
+        - damping_like_translation_force
+        - damping_like_boundary_regression
+        - field_like_force_angular_density
+        - field_like_force_density_regression
+        - sot_generalized_force
+        - sublattice_gyro_density_a
+        - sublattice_gyro_density_b
+        - sublattice_gyro_density_regression
+        - gyrotropic_cancellation
+        - gyrotropic_cancellation_regression
+        - inertial_equation
+        - inertial_equation_regression
+        - literature_afm_source_residual
+        - literature_afm_target_residual
+        - literature_afm_transformed_residual
+        - literature_afm_mass_bridge_regression
+        - literature_afm_damping_bridge_regression
+        - literature_afm_gyro_bridge_regression
+        - literature_afm_force_bridge_regression
+        - literature_afm_exact_regression
+        - alpha_limit_regression
+        - afm_energy_density_dimension_regression
+        - inertial_dimension_regression
+      symbolic_by_design:
+        - collective_metric_integral_definition
+        - sot_radial_integral_definition
+      metadata:
+        - dmi_density_type
+        - dimension_contract
+    assertions:
+      dimension:
+        keys:
+          - afm_energy_density_dimension_regression
+          - inertial_dimension_regression
+      sign:
+        keys:
+          - sublattice_gyro_density_regression
+          - gyrotropic_cancellation_regression
+          - literature_afm_gyro_bridge_regression
+          - literature_afm_force_bridge_regression
+      boundary:
+        keys: [damping_like_boundary_regression]
+      limit:
+        keys: [alpha_limit_regression]
+    known_gaps: []
+
+  - route_id: fm_antiskyrmion_sot_full
+    evidence_card: evidence_cards/extended/B4_fm_antiskyrmion_sot.yaml
+    result_keys:
+      must_resolve:
+        - dmi_variational_regression
+        - antiskyrmion_ansatz
+        - ansatz_constraint_regression
+        - topological_density
+        - topological_charge
+        - topological_charge_regression
+        - gyrotropic_angular_density
+        - gyrotropic_density_regression
+        - gyrotropic_tensor
+        - gyrotropic_tensor_regression
+        - anisotropic_metric_radial_integrand
+        - anisotropic_metric_regression
+        - metric_anisotropy_ratio_regression
+        - isotropic_metric_limit_regression
+        - damping_tensor
+        - damping_tensor_regression
+        - sot_force_angular_density
+        - sot_force_density_regression
+        - field_like_translation_force
+        - field_like_boundary_regression
+        - sot_generalized_force
+        - anisotropic_dmi_angular_density
+        - anisotropic_dmi_projection_regression
+        - dmi_energy_projection
+        - dmi_helicity_derivative
+        - dmi_helicity_stationarity_regression
+        - thiele_equation
+        - thiele_equation_regression
+        - alpha_limit_regression
+        - anti_energy_density_dimension_regression
+        - anti_thiele_dimension_regression
+        - literature_antiskyrmion_source_residual
+        - literature_antiskyrmion_transformed_residual
+        - literature_antiskyrmion_target_residual
+        - literature_antiskyrmion_exact_regression
+      symbolic_by_design:
+        - collective_dissipation_integral_definition
+        - sot_radial_integral_definition
+      metadata:
+        - dmi_density_type
+        - dimension_contract
+    assertions:
+      dimension:
+        keys:
+          - anti_energy_density_dimension_regression
+          - anti_thiele_dimension_regression
+      sign:
+        keys:
+          - topological_charge_regression
+          - gyrotropic_density_regression
+          - gyrotropic_tensor_regression
+          - anisotropic_dmi_projection_regression
+          - literature_antiskyrmion_exact_regression
+      boundary:
+        keys: [field_like_boundary_regression]
+      limit:
+        keys:
+          - isotropic_metric_limit_regression
+          - alpha_limit_regression
+    known_gaps: []
+
+  - route_id: fm_meron_topology_full
+    evidence_card: evidence_cards/extended/C2_fm_meron_topology.yaml
+    result_keys:
+      must_resolve:
+        - meron_ansatz
+        - ansatz_constraint_regression
+        - topological_density
+        - topological_charge
+        - boundary_charge_regression
+        - half_charge_magnitude_regression
+        - winding_sign_regression
+        - polarity_sign_regression
+        - non_meron_boundary_control_charge
+        - non_meron_boundary_control_regression
+        - topology_dimension_regression
+        - literature_meron_source_charge
+        - literature_meron_transformed_charge
+        - literature_meron_target_charge
+        - literature_meron_exact_regression
+      symbolic_by_design: []
+      metadata:
+        - boundary_conditions
+        - dimension_contract
+        - topology_note
+    assertions:
+      dimension:
+        keys: [topology_dimension_regression]
+      sign:
+        keys:
+          - winding_sign_regression
+          - polarity_sign_regression
+      boundary:
+        keys:
+          - boundary_charge_regression
+          - non_meron_boundary_control_regression
+          - literature_meron_exact_regression
+      limit:
+        not_applicable_reason: "This topology-only route has no dynamical or tunable-coupling limiting-case claim; its radial boundary control is recorded under boundary assertions."
+    known_gaps: []
+
+  - route_id: fm_bimeron_topology_full
+    evidence_card: evidence_cards/extended/C3_fm_bimeron_topology.yaml
+    result_keys:
+      must_resolve:
+        - constituent_charges
+        - general_composite_charge
+        - bimeron_topological_charge
+        - constituent_half_charge_regression
+        - charge_additivity_regression
+        - nontrivial_pairing_regression
+        - integer_charge_magnitude_regression
+        - trivial_pair_control_charge
+        - trivial_pair_control_regression
+        - topology_dimension_regression
+        - literature_bimeron_source_charge
+        - literature_bimeron_transformed_charge
+        - literature_bimeron_target_charge
+        - literature_bimeron_exact_regression
+      symbolic_by_design: []
+      metadata:
+        - pairing_rules
+        - dimension_contract
+        - topology_note
+    assertions:
+      dimension:
+        keys: [topology_dimension_regression]
+      sign:
+        keys:
+          - nontrivial_pairing_regression
+          - trivial_pair_control_regression
+      boundary:
+        keys:
+          - constituent_half_charge_regression
+          - literature_bimeron_exact_regression
+      limit:
+        not_applicable_reason: "This topology-only additive construction has no dynamical limit; breakdown at strong constituent overlap is a validity boundary, not a claimed limiting equation."
+    known_gaps: []
+
+  - route_id: fm_vortex_topology_full
+    evidence_card: evidence_cards/extended/C4_fm_vortex_topology.yaml
+    result_keys:
+      must_resolve:
+        - boundary_phase
+        - in_plane_boundary_field
+        - winding_number
+        - winding_regression
+        - unit_winding_magnitude_regression
+        - single_valued_boundary_regression
+        - core_polarity_dependent_charge
+        - winding_charge_distinction_regression
+        - vorticity_flip_regression
+        - core_polarity_flip_regression
+        - topology_dimension_regression
+        - literature_vortex_source_winding
+        - literature_vortex_transformed_winding
+        - literature_vortex_target_winding
+        - literature_vortex_winding_exact_regression
+        - literature_vortex_source_core_charge
+        - literature_vortex_transformed_core_charge
+        - literature_vortex_target_core_charge
+        - literature_vortex_core_charge_exact_regression
+      symbolic_by_design: []
+      metadata:
+        - dimension_contract
+        - topology_note
+    assertions:
+      dimension:
+        keys: [topology_dimension_regression]
+      sign:
+        keys:
+          - vorticity_flip_regression
+          - core_polarity_flip_regression
+      boundary:
+        keys:
+          - single_valued_boundary_regression
+          - literature_vortex_winding_exact_regression
+          - literature_vortex_core_charge_exact_regression
+      limit:
+        not_applicable_reason: "This topology-only contour route has no dynamical or coupling limit; finite-core validity is enforced as an explicit boundary assumption."
+    known_gaps: []

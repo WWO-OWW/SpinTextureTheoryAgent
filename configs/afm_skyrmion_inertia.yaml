@@ -1,0 +1,33 @@
+task_name: afm_skyrmion_inertia
+material: collinear_antiferromagnet
+texture: skyrmion
+drive: spin_orbit_torque
+geometry: thin_film_2d
+goals:
+  - derive_sigma_model
+  - derive_inertial_collective_coordinate_equation
+  - compute_topological_charge
+assumptions:
+  - compensated_two_sublattice_afm
+  - rigid_skyrmion
+  - gyrotropic_term_cancellation
+  - axisymmetric_skyrmion_profile
+  - unit_winding_number
+  - core_boundary_theta_pi
+  - far_field_theta_zero
+  - localized_texture_boundary_terms_vanish
+  - in_plane_spin_polarization
+  - explicit_sigma_model_force_density
+  - fixed_helicity
+  - opposite_sublattice_textures
+  - equal_sublattice_spin_densities
+  - translationally_invariant_film
+parameters:
+  A: exchange_stiffness
+  K: effective_anisotropy
+  D: dmi_strength
+  chi: afm_susceptibility
+  alpha: gilbert_damping
+  s: spin_density
+  tauDL: damping_like_sot
+  tauFL: field_like_sot

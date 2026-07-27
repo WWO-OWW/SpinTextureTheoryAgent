@@ -1,0 +1,22 @@
+task_name: altermagnet_stripe_sot_review
+material: altermagnet
+texture: stripe_domain
+drive: spin_orbit_torque
+geometry: thin_film_2d
+goals:
+  - derive_anisotropic_afm_like_model
+  - collective_coordinate_projection
+  - linear_stability
+assumptions:
+  - crystal_symmetry_tensors_required
+  - anisotropic_sot_response
+  - human_review_required_for_torque_form
+  - tensorial_wall_chain_coefficients
+  - interfacial_dmi_optional
+parameters:
+  A: exchange_stiffness
+  K: effective_anisotropy
+  D: interfacial_dmi
+  alpha: gilbert_damping
+  Lambda: crystal_symmetry_response_tensor
+  tauDL: damping_like_sot

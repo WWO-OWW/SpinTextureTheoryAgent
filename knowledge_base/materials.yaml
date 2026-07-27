@@ -1,0 +1,48 @@
+ferromagnet:
+  order_parameters: [m]
+  constraints:
+    - "m.m == 1"
+  dynamics: llg
+  characteristic_equation: "dm/dt = -gamma m x Heff + alpha m x dm/dt + tau"
+  notes:
+    - "First-order gyrotropic dynamics are generally important."
+
+collinear_antiferromagnet:
+  order_parameters: [n, m]
+  constraints:
+    - "n.n == 1"
+    - "n.m == 0"
+    - "|m| << 1 under strong exchange"
+  dynamics: sigma_model
+  characteristic_equation: "chi d2n/dt2 + alpha s dn/dt = -delta U/delta n + drive + lambda n"
+  notes:
+    - "Use inertial second-order dynamics after eliminating small net magnetization."
+
+ferrimagnet:
+  order_parameters: [m1, m2, L, M]
+  constraints:
+    - "m1.m1 == 1"
+    - "m2.m2 == 1"
+  dynamics: two_sublattice_llg
+  characteristic_equation: "net angular momentum controls FM-like vs AFM-like limit"
+  notes:
+    - "Near angular momentum compensation, dynamics approach AFM-like behavior."
+
+noncollinear_antiferromagnet:
+  order_parameters: [m1, m2, m3, L1, L2, R]
+  constraints:
+    - "m1.m1 == m2.m2 == m3.m3 == 1"
+    - "m1 + m2 + m3 approximately 0 for 120-degree order"
+  dynamics: multisublattice_llg_or_so3
+  characteristic_equation: "derive from three-sublattice LLG or SO(3) order parameter"
+  notes:
+    - "Topology may need sublattice-resolved or order-parameter-resolved definitions."
+
+altermagnet:
+  order_parameters: [n]
+  constraints:
+    - "n.n == 1"
+  dynamics: anisotropic_afm_like
+  characteristic_equation: "AFM-like dynamics with crystal-symmetry-dependent tensors"
+  notes:
+    - "Electric-current response is strongly anisotropic and symmetry dependent."

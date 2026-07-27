@@ -1,0 +1,21 @@
+task_name: afm_skyrmion_safety_scaffold
+material: collinear_antiferromagnet
+texture: skyrmion
+drive: spin_orbit_torque
+geometry: thin_film_2d
+goals:
+  - derive_sigma_model
+  - derive_inertial_collective_coordinate_equation
+  - compute_topological_charge
+assumptions:
+  - compensated_two_sublattice_afm
+  - rigid_skyrmion
+  - gyrotropic_term_cancellation
+parameters:
+  A: exchange_stiffness
+  K: effective_anisotropy
+  D: interfacial_dmi
+  chi: afm_susceptibility
+  alpha: gilbert_damping
+  s: spin_density
+  tauDL: damping_like_sot

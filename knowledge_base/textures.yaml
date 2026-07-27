@@ -1,0 +1,42 @@
+domain_wall:
+  dimension: 1
+  collective_coordinates: [X, Phi, Delta]
+  topology: winding_or_none
+  ansatz: domain_wall_1d
+
+stripe_domain:
+  dimension: 2
+  collective_coordinates: [Xi, Phi_i, Li]
+  topology: usually_domain_wall_array
+  ansatz: domain_wall_array
+  reduced_model: coupled_wall_chain
+
+skyrmion:
+  dimension: 2
+  collective_coordinates: [X, Y, R, eta]
+  topology: integer_Q
+  ansatz: radial_skyrmion
+
+antiskyrmion:
+  dimension: 2
+  collective_coordinates: [X, Y, R, eta]
+  topology: integer_Q_with_opposite_vorticity
+  ansatz: anisotropic_radial_texture
+
+meron:
+  dimension: 2
+  collective_coordinates: [X, Y, polarity, helicity]
+  topology: half_integer_Q
+  ansatz: meron_radial
+
+bimeron:
+  dimension: 2
+  collective_coordinates: [X1, Y1, X2, Y2, separation, helicity]
+  topology: integer_Q_from_two_merons
+  ansatz: paired_meron
+
+vortex:
+  dimension: 2
+  collective_coordinates: [X, Y, polarity, chirality]
+  topology: winding_number
+  ansatz: vortex

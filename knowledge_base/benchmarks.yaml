@@ -1,0 +1,22 @@
+fm_skyrmion_thiele:
+  material: ferromagnet
+  texture: skyrmion
+  expected: "G cross Rdot + alpha D Rdot = F"
+
+afm_domain_wall_inertia:
+  material: collinear_antiferromagnet
+  texture: domain_wall
+  expected: "M Xddot + Gamma Xdot = F"
+
+afm_stripe_chain:
+  material: collinear_antiferromagnet
+  texture: stripe_domain
+  expected: "M u_i_ddot + Gamma u_i_dot + k(2u_i-u_{i+1}-u_{i-1}) = F_i"
+
+meron_topology:
+  texture: meron
+  expected: "Q = +/- 1/2 under meron boundary conditions"
+
+skyrmion_topology:
+  texture: skyrmion
+  expected: "Q = integer, usually +/-1 for standard skyrmion"

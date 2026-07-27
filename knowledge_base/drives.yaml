@@ -1,0 +1,23 @@
+spin_orbit_torque:
+  symbols: [tauDL, tauFL, p]
+  damping_like: "tauDL field x (field x p)"
+  field_like: "tauFL field x p"
+  notes:
+    - "For AFM, distinguish uniform torque from staggered torque."
+
+spin_transfer_torque:
+  symbols: [u, beta]
+  adiabatic: "-(u.grad) field"
+  nonadiabatic: "beta field x ((u.grad) field)"
+
+temperature_gradient:
+  symbols: [gradT]
+  effective_force: "F_T = -S_texture gradT or magnon-pressure term"
+  notes:
+    - "Usually enters as stochastic noise, magnon current, or entropic force, not a simple conservative Hamiltonian term."
+
+magnetic_field:
+  symbols: [H]
+  zeeman: "-mu0 Ms H.m or sublattice Zeeman terms"
+  notes:
+    - "Uniform field weakly couples to ideal compensated AFM order; staggered effective fields are more direct."

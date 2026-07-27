@@ -1,0 +1,19 @@
+task_name: noncollinear_afm_skyrmion_sot_review
+material: noncollinear_antiferromagnet
+texture: skyrmion
+drive: spin_orbit_torque
+geometry: thin_film_2d
+goals:
+  - derive_multisublattice_model
+  - compute_topological_charge
+assumptions:
+  - multi_order_parameter_required
+  - human_review_required
+  - sublattice_resolved_topology_required
+parameters:
+  A: exchange_stiffness
+  K: effective_anisotropy
+  D: interfacial_dmi
+  alpha: gilbert_damping
+  J_sub: sublattice_exchange_matrix
+  tauDL: damping_like_sot

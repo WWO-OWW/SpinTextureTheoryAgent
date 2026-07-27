@@ -1,0 +1,30 @@
+task_name: afm_stripe_sot
+material: collinear_antiferromagnet
+texture: stripe_domain
+drive: spin_orbit_torque
+geometry: thin_film_2d
+goals:
+  - derive_sigma_model
+  - collective_coordinate_projection
+  - linear_stability
+assumptions:
+  - strong_exchange_limit
+  - rigid_domain_wall
+  - constant_wall_width
+  - weak_damping
+  - interfacial_dmi_optional
+  - sot_force_density_explicit
+  - symbolic_spin_polarization
+  - pinned_internal_wall_angles
+  - phenomenological_nearest_neighbor_stiffness
+  - periodic_wall_chain
+  - localized_wall_boundary_terms_vanish
+parameters:
+  A: exchange_stiffness
+  K: easy_axis_anisotropy
+  D: interfacial_dmi
+  chi: afm_susceptibility
+  alpha: gilbert_damping
+  s: spin_density
+  tauDL: damping_like_sot
+  tauFL: field_like_sot

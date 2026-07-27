@@ -1,0 +1,34 @@
+task_name: fm_antiskyrmion_sot
+material: ferromagnet
+texture: antiskyrmion
+drive: spin_orbit_torque
+geometry: thin_film_2d
+goals:
+  - derive_llg
+  - derive_thiele_equation
+  - compute_topological_charge
+assumptions:
+  - rigid_antiskyrmion
+  - unit_magnetization
+  - anisotropic_dmi_required
+  - elliptical_antiskyrmion_profile
+  - antiskyrmion_winding_minus_one
+  - core_boundary_theta_pi
+  - far_field_theta_zero
+  - localized_texture_boundary_terms_vanish
+  - in_plane_spin_polarization
+  - explicit_llg_sot_torque
+  - fixed_helicity
+  - positive_elliptic_scales
+  - translationally_invariant_film
+  - dmi_selected_antiskyrmion_helicity
+parameters:
+  A: exchange_stiffness
+  K: effective_perpendicular_anisotropy
+  D: anisotropic_dmi
+  alpha: gilbert_damping
+  s: spin_density
+  tauDL: damping_like_sot
+  tauFL: field_like_sot
+  lambdaX: antiskyrmion_x_scale
+  lambdaY: antiskyrmion_y_scale

@@ -1,0 +1,16 @@
+task_name: fm_vortex_topology
+material: ferromagnet
+texture: vortex
+geometry: thin_film_2d
+goals:
+  - compute_topological_charge
+assumptions:
+  - unit_magnetization
+  - winding_number_texture
+  - core_polarity_sets_out_of_plane_component
+  - single_valued_in_plane_phase
+  - unit_vorticity_magnitude
+  - finite_core_regularization
+parameters:
+  A: exchange_stiffness
+  K: effective_perpendicular_anisotropy

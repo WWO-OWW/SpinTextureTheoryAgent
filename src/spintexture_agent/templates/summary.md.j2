@@ -1,0 +1,234 @@
+# {{ task.task_name }}
+
+## Result identity
+
+- Authoritative record ID: `{{ record_id }}`
+- Capability route: `{{ physics_ir.capability_route_id if physics_ir else none }}`
+- Support level: `{{ physics_ir.support_level if physics_ir else 'unclassified' }}`
+- Compatibility knowledge status (derived): `{{ physics_ir.knowledge_status if physics_ir else 'unclassified' }}`
+- Human review required: `{{ physics_ir.confidence.requires_human_review if physics_ir else true }}`
+- Permitted claim: {{ physics_ir.permitted_claim if physics_ir else 'No claim is permitted.' }}
+
+{% if physics_ir and physics_ir.support_level == "full_derivation" %}
+This route may reproduce a complete derivation under the assumptions below. The
+claim is limited to the registered model, ansatz, boundary conditions, and
+validation evidence; it is not a universal result for every material with the
+same magnetic order.
+{% elif physics_ir and physics_ir.support_level == "scaffold" %}
+This result is a derivation scaffold. It identifies a plausible model and
+executable substeps, but missing evidence prevents a complete physics claim.
+{% elif physics_ir and physics_ir.support_level == "review_only" %}
+This result is review-only. It may guide expert model construction, but the
+Agent must not present its candidate route as a derived final equation.
+{% else %}
+No formal capability route supports this task. Treat all proposed structure as
+provisional until the promotion requirements are completed.
+{% endif %}
+
+## Accessible view
+
+### Physical picture
+
+{% if physics_ir and physics_ir.dynamics.expected_equation_type == "topology_only" %}
+The task asks for a topological characterization rather than a dynamical
+equation. The Agent evaluates the winding or topological charge of the declared
+`{{ physics_ir.order_parameter.topology_field }}` field using the stated profile
+and boundary conditions.
+{% elif physics_ir and physics_ir.dynamics.type == "sigma_model" %}
+The central field is the antiferromagnetic order parameter
+`{{ physics_ir.order_parameter.primary }}`. Its collective motion is inertial,
+so acceleration and damping can appear after projection onto the selected
+coordinates. In the compensated limit, the ferromagnetic gyrotropic term must
+cancel.
+{% elif physics_ir and physics_ir.dynamics.type == "llg" %}
+The central field is the normalized magnetization
+`{{ physics_ir.order_parameter.primary }}`. The field obeys first-order LLG
+dynamics; projection onto a rigid texture produces a gyrotropic collective
+equation when the topology is nonzero.
+{% elif physics_ir %}
+The selected order parameter is `{{ physics_ir.order_parameter.primary }}` and
+the candidate dynamics class is `{{ physics_ir.dynamics.type }}`. This class
+requires expert review before a final equation can be claimed.
+{% endif %}
+
+### What the result means
+
+- Expected equation class: `{{ physics_ir.dynamics.expected_equation_type if physics_ir else 'unknown' }}`
+- Topology is defined from: `{{ physics_ir.order_parameter.topology_field if physics_ir else 'unknown' }}`
+- Collective coordinates: {{ physics_ir.ansatz.collective_coordinates if physics_ir else [] }}
+- Gyrotropic contribution: `{{ physics_ir.dynamics.gyrotropic_term if physics_ir else 'unknown' }}`
+- The generated Wolfram script is the executable derivation; formulas are not
+  considered verified merely because this report was generated.
+
+### Input task
+
+- Material: `{{ task.material }}`
+- Texture: `{{ task.texture }}`
+- Drive: `{{ task.drive }}`
+- Geometry: `{{ task.geometry }}`
+- Goals: {{ task.goals }}
+
+## Formal view
+
+### Selected theory template
+
+- Template: `{{ template.name }}`
+- Dynamics: `{{ template.dynamics }}`
+- Order parameters: {{ template.order_parameters }}
+- Ansatz: `{{ template.ansatz }}`
+- Reduced model: `{{ template.reduced_model }}`
+
+{% if physics_ir %}
+### Physics IR
+
+- Primary order parameter: `{{ physics_ir.order_parameter.primary }}`
+- Auxiliary order parameters: {{ physics_ir.order_parameter.auxiliary }}
+- Constraints: {{ physics_ir.order_parameter.constraints }}
+- Energy terms: {{ physics_ir.energy_terms }}
+- Analysis operations: {{ physics_ir.analysis }}
+- Expected equation type: `{{ physics_ir.dynamics.expected_equation_type }}`
+- Inertial term: `{{ physics_ir.dynamics.inertial_term }}`
+- Ansatz validity declarations: {{ physics_ir.ansatz.validity }}
+{% if physics_ir.dimension_contract %}
+- Dimension convention: `{{ physics_ir.dimension_contract.convention }}`
+- Dimension basis: {{ physics_ir.dimension_contract.basis }}
+- Dimension assignments: {{ physics_ir.dimension_contract.assignments }}
+- Expected equation dimensions: {{ physics_ir.dimension_contract.expected_equation_dimensions }}
+{% endif %}
+
+### Limit checks
+
+{% for item in physics_ir.limit_checks %}
+- {{ item }}
+{% else %}
+- No dynamical limit check applies to this topology-only route.
+{% endfor %}
+
+### Confidence and review routing
+
+- Model selection: {{ physics_ir.confidence.model_selection }}
+- Ansatz validity: {{ physics_ir.confidence.ansatz_validity }}
+- Topology definition: {{ physics_ir.confidence.topology_definition }}
+- Requires human review: `{{ physics_ir.confidence.requires_human_review }}`
+{% endif %}
+
+## Assumptions and validity
+
+{% for item in task.assumptions %}
+- `{{ item }}`
+{% else %}
+- No assumptions were supplied; formal support cannot be inferred from task labels alone.
+{% endfor %}
+
+{% if physics_ir and physics_ir.capability_limitations %}
+### Capability limitations
+
+{% for item in physics_ir.capability_limitations %}
+- {{ item }}
+{% endfor %}
+{% endif %}
+
+## Evidence and promotion
+
+{% if physics_ir %}
+- Capability registry version: `{{ physics_ir.capability_registry_version }}`
+- Evidence-status schema version: `{{ physics_ir.evidence_status.schema_version }}`
+- Evidence scope: `{{ physics_ir.evidence_status.scope }}`
+- Claim class: `{{ physics_ir.evidence_status.claim_class }}`
+- Compatibility knowledge status: `{{ physics_ir.evidence_status.compatibility_knowledge_status }}`
+
+### Independent evidence badges
+
+| Evidence axis | Status | Registered artifacts |
+| --- | --- | --- |
+| `cas_execution` | `{{ physics_ir.evidence_status.cas_execution.status }}` | {{ physics_ir.evidence_status.cas_execution.artifact_refs }} |
+| `analytic_reproduction` | `{{ physics_ir.evidence_status.analytic_reproduction.status }}` | {{ physics_ir.evidence_status.analytic_reproduction.artifact_refs }} |
+| `literature_reproduction` | `{{ physics_ir.evidence_status.literature_reproduction.status }}` | {{ physics_ir.evidence_status.literature_reproduction.artifact_refs }} |
+| `assertion_coverage` | `{{ physics_ir.evidence_status.assertion_coverage.status }}` | {{ physics_ir.evidence_status.assertion_coverage.artifact_refs }} |
+| `benchmark` | `{{ physics_ir.evidence_status.benchmark.status }}` | {{ physics_ir.evidence_status.benchmark.artifact_refs }} |
+| `cross_engine` | `{{ physics_ir.evidence_status.cross_engine.status }}` | {{ physics_ir.evidence_status.cross_engine.artifact_refs }} |
+| `external_review` | `{{ physics_ir.evidence_status.external_review.status }}` | {{ physics_ir.evidence_status.external_review.artifact_refs }} |
+| `public_release` | `{{ physics_ir.evidence_status.public_release.status }}` | {{ physics_ir.evidence_status.public_release.artifact_refs }} |
+
+These axes are independent. A pending external review does not change a passed
+CAS or analytic-reproduction badge, and a registered benchmark is not a passed
+benchmark.
+
+- Registered evidence:
+{% for item in physics_ir.evidence_refs %}
+  - `{{ item }}`
+{% else %}
+  - No route-specific evidence is registered.
+{% endfor %}
+
+### Blocked claims
+
+{% for item in physics_ir.blocked_claims %}
+- {{ item }}
+{% else %}
+- No route-specific blocked claim beyond the declared limitations.
+{% endfor %}
+
+### Missing evidence
+
+{% for item in physics_ir.missing_evidence %}
+- {{ item }}
+{% else %}
+- None declared for this registered route.
+{% endfor %}
+
+### Promotion requirements
+
+{% for item in physics_ir.promotion_requirements %}
+- {{ item }}
+{% else %}
+- No promotion is implied. Public release still requires the Project 1 release gate.
+{% endfor %}
+{% endif %}
+
+## Validation report
+
+{% for item in validation_items %}
+- `{{ item.status }}` / `{{ item.severity }}` / `{{ item.id }}`: {{ item.message }}
+{% endfor %}
+
+## Wolfram result contract
+
+The generated script prints a machine-readable result block between
+`SPINTEXTURE_AGENT_RESULT_JSON_BEGIN` and `SPINTEXTURE_AGENT_RESULT_JSON_END`.
+When `--execute-wolfram` is used, the execution status and extracted expressions
+are copied into record `{{ record_id }}`.
+
+Expected result keys:
+
+{% for key in wolfram_result_keys %}
+- `{{ key }}`
+{% else %}
+- No template-specific Wolfram result keys are declared. No complete symbolic
+  result should be claimed.
+{% endfor %}
+
+{% if warnings %}
+## Warnings
+
+{% for item in warnings %}
+- {{ item }}
+{% endfor %}
+{% endif %}
+
+## Human review checklist
+
+- [ ] Confirm the order parameter and constraints for the actual material.
+- [ ] Confirm the DMI and torque forms from geometry and symmetry.
+- [ ] Confirm ansatz and boundary-condition applicability.
+- [ ] Inspect all unresolved Wolfram expressions and regression outcomes.
+- [ ] Confirm dimensions, signs, limits, and topology conventions.
+- [ ] Preserve this report's support level, independent evidence badges, and derived compatibility status when communicating the result.
+
+## Artifact contract
+
+This report is the single layered human-facing rendering. The JSON record is
+the authoritative machine-readable source; the `.wl` script and execution logs
+are independent derivation evidence. Accessible and formal sections share the
+same record ID and may not carry different formulas, assumptions, warnings, or
+certainty labels.

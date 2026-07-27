@@ -1,0 +1,643 @@
+schema_version: "2.0.0"
+evidence_status_schema_version: "1.0.0"
+knowledge_lifecycle:
+  # Legacy compatibility labels. Each route value is derived from evidence_status.
+  - candidate
+  - symmetry_checked
+  - cas_validated
+  - expert_validated
+  - benchmarked
+  - released
+
+routes:
+  - route_id: afm_stripe_sot_full
+    material: collinear_antiferromagnet
+    texture: stripe_domain
+    drive: spin_orbit_torque
+    geometry: thin_film_2d
+    required_goals: [derive_sigma_model, collective_coordinate_projection, linear_stability]
+    required_assumptions:
+      - sot_force_density_explicit
+      - symbolic_spin_polarization
+      - pinned_internal_wall_angles
+      - phenomenological_nearest_neighbor_stiffness
+      - periodic_wall_chain
+      - localized_wall_boundary_terms_vanish
+    support_level: full_derivation
+    evidence_status:
+      claim_class: known_theory
+      cas_execution: passed
+      analytic_reproduction: passed
+      literature_reproduction: passed
+      assertion_coverage: passed
+      benchmark: registered
+      cross_engine: passed
+      external_review: pending
+      public_release: missing
+    requires_human_review: false
+    permitted_claim: Complete executable AFM sigma-model and wall-chain derivation under the registered rigid-wall, force, boundary, and stiffness assumptions.
+    blocked_claims:
+      - Material-specific quantitative prediction without fitted parameters.
+      - Unpinned internal-angle or nonlocal wall-interaction dynamics.
+    evidence:
+      config: configs/afm_stripe_sot.yaml
+      benchmark_cases: [benchmark_cases/A4_afm_stripe_sot.yaml]
+      evidence_card: evidence_cards/core3/A4_afm_stripe_sot.yaml
+      independent_gold_script: mathematica/gold/A4_afm_stripe_sot_gold.wl
+      machine_audit_spec: machine_audit_specs/core3/A4_afm_stripe_sot.yaml
+      assertion_coverage_registry: knowledge_base/assertion_coverage.yaml
+      cas_execution_records:
+        - analysis/evidence_runs/core3_latest/A4_afm_stripe_sot_evidence/evidence_result.json
+      analytic_reproduction_records:
+        - analysis/evidence_runs/core3_latest/A4_afm_stripe_sot_evidence/evidence_result.json
+      assertion_coverage_records:
+        - analysis/assertion_coverage/literature_02/assertion_coverage.json
+      cross_engine_records:
+        - analysis/cross_engine/core3_latest/A4_afm_stripe_sot/cross_engine_result.json
+      literature_reproduction_record: literature_reproduction_records/core3/A4_afm_stripe_sot.yaml
+      wolfram_functions:
+        - AFMSigmaEquation
+        - DomainWallAnsatz
+        - CollectiveMassMatrix
+        - CollectiveDampingMatrix
+        - GeneralizedForce
+        - LinearStabilityMatrix
+      validator_checks:
+        - afm_dynamics_type
+        - dmi_symmetry
+        - collective_boundary_terms
+        - stripe_stiffness_review
+      references: []
+    missing_evidence: []
+    promotion_requirements: []
+    limitations:
+      - Rigid fixed-width walls with pinned internal angles.
+      - Nearest-neighbor wall stiffness is phenomenological.
+
+  - route_id: fm_skyrmion_sot_full
+    material: ferromagnet
+    texture: skyrmion
+    drive: spin_orbit_torque
+    geometry: thin_film_2d
+    required_goals: [derive_llg, derive_thiele_equation, compute_topological_charge]
+    required_assumptions:
+      - axisymmetric_skyrmion_profile
+      - unit_winding_number
+      - core_boundary_theta_pi
+      - far_field_theta_zero
+      - localized_texture_boundary_terms_vanish
+      - in_plane_spin_polarization
+      - explicit_llg_sot_torque
+      - fixed_helicity
+    support_level: full_derivation
+    evidence_status:
+      claim_class: known_theory
+      cas_execution: passed
+      analytic_reproduction: passed
+      literature_reproduction: passed
+      assertion_coverage: passed
+      benchmark: registered
+      cross_engine: passed
+      external_review: pending
+      public_release: missing
+    requires_human_review: false
+    permitted_claim: Complete executable rigid FM-skyrmion Thiele derivation with registered topology, SOT, and boundary conventions.
+    blocked_claims:
+      - Deformable, high-velocity, or material-unspecified skyrmion dynamics.
+    evidence:
+      config: configs/fm_skyrmion_sot.yaml
+      benchmark_cases: [benchmark_cases/B1_fm_skyrmion_sot.yaml]
+      evidence_card: evidence_cards/core3/B1_fm_skyrmion_sot.yaml
+      independent_gold_script: mathematica/gold/B1_fm_skyrmion_sot_gold.wl
+      machine_audit_spec: machine_audit_specs/core3/B1_fm_skyrmion_sot.yaml
+      assertion_coverage_registry: knowledge_base/assertion_coverage.yaml
+      cas_execution_records:
+        - analysis/evidence_runs/core3_latest/B1_fm_skyrmion_sot_evidence/evidence_result.json
+      analytic_reproduction_records:
+        - analysis/evidence_runs/core3_latest/B1_fm_skyrmion_sot_evidence/evidence_result.json
+      assertion_coverage_records:
+        - analysis/assertion_coverage/literature_02/assertion_coverage.json
+      cross_engine_records:
+        - analysis/cross_engine/core3_latest/B1_fm_skyrmion_sot/cross_engine_result.json
+      literature_reproduction_record: literature_reproduction_records/core3/B1_fm_skyrmion_sot.yaml
+      wolfram_functions:
+        - TopologicalDensity2D
+        - ThieleGyrotropicTensor
+        - GeneralizedForce
+      validator_checks: [dynamics_type, topology_field, dmi_symmetry, gyro_sign_convention]
+      references: []
+    missing_evidence: []
+    promotion_requirements: []
+    limitations:
+      - Rigid, axisymmetric, fixed-helicity approximation.
+      - Low-velocity translational collective-coordinate regime.
+
+  - route_id: afm_skyrmion_sot_full
+    material: collinear_antiferromagnet
+    texture: skyrmion
+    drive: spin_orbit_torque
+    geometry: thin_film_2d
+    required_goals:
+      - derive_sigma_model
+      - derive_inertial_collective_coordinate_equation
+      - compute_topological_charge
+    required_assumptions:
+      - compensated_two_sublattice_afm
+      - axisymmetric_skyrmion_profile
+      - unit_winding_number
+      - core_boundary_theta_pi
+      - far_field_theta_zero
+      - localized_texture_boundary_terms_vanish
+      - in_plane_spin_polarization
+      - explicit_sigma_model_force_density
+      - fixed_helicity
+      - opposite_sublattice_textures
+      - equal_sublattice_spin_densities
+      - translationally_invariant_film
+    support_level: full_derivation
+    evidence_status:
+      claim_class: known_theory
+      cas_execution: passed
+      analytic_reproduction: passed
+      literature_reproduction: passed
+      assertion_coverage: passed
+      benchmark: registered
+      cross_engine: passed
+      external_review: pending
+      public_release: missing
+    requires_human_review: false
+    permitted_claim: Complete executable compensated-AFM skyrmion inertial derivation with sublattice gyrotropic cancellation under the registered assumptions.
+    blocked_claims:
+      - Uncompensated, noncollinear, or internal-mode AFM-skyrmion dynamics.
+    evidence:
+      config: configs/afm_skyrmion_inertia.yaml
+      benchmark_cases:
+        - benchmark_cases/B2_afm_skyrmion_sot.yaml
+        - benchmark_cases/E1_afm_skyrmion_not_fm_thiele.yaml
+        - benchmark_cases/E4_afm_topology_not_total_magnetization.yaml
+      evidence_card: evidence_cards/core3/B2_afm_skyrmion_sot.yaml
+      independent_gold_script: mathematica/gold/B2_afm_skyrmion_sot_gold.wl
+      machine_audit_spec: machine_audit_specs/core3/B2_afm_skyrmion_sot.yaml
+      assertion_coverage_registry: knowledge_base/assertion_coverage.yaml
+      cas_execution_records:
+        - analysis/evidence_runs/core3_latest/B2_afm_skyrmion_sot_evidence/evidence_result.json
+      analytic_reproduction_records:
+        - analysis/evidence_runs/core3_latest/B2_afm_skyrmion_sot_evidence/evidence_result.json
+      assertion_coverage_records:
+        - analysis/assertion_coverage/literature_02/assertion_coverage.json
+      cross_engine_records:
+        - analysis/cross_engine/core3_latest/B2_afm_skyrmion_sot/cross_engine_result.json
+      literature_reproduction_record: literature_reproduction_records/core3/B2_afm_skyrmion_sot.yaml
+      wolfram_functions:
+        - AFMSigmaEquation
+        - TopologicalDensity2D
+        - CollectiveMassMatrix
+        - CollectiveDampingMatrix
+      validator_checks:
+        - afm_dynamics_type
+        - topology_field
+        - afm_skyrmion_no_fm_thiele
+        - afm_compensation_sign_convention
+      references: []
+    missing_evidence: []
+    promotion_requirements: []
+    limitations:
+      - Exact sublattice compensation and rigid fixed-helicity texture.
+      - Translational mode only; internal modes are excluded.
+
+  - route_id: afm_skyrmion_sot_scaffold
+    material: collinear_antiferromagnet
+    texture: skyrmion
+    drive: spin_orbit_torque
+    geometry: thin_film_2d
+    required_goals:
+      - derive_sigma_model
+      - derive_inertial_collective_coordinate_equation
+      - compute_topological_charge
+    required_assumptions:
+      - compensated_two_sublattice_afm
+      - rigid_skyrmion
+      - gyrotropic_term_cancellation
+    support_level: scaffold
+    evidence_status:
+      claim_class: candidate_extension
+      cas_execution: pending
+      analytic_reproduction: missing
+      literature_reproduction: missing
+      assertion_coverage: missing
+      benchmark: missing
+      cross_engine: missing
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Candidate AFM-skyrmion model and executable derivation scaffold with an explicit missing-evidence list.
+    blocked_claims:
+      - A final inertial equation or topological value before profile, boundary, torque, and sublattice conventions are supplied.
+    evidence:
+      config: configs/afm_skyrmion_safety_scaffold.yaml
+      benchmark_cases: []
+      wolfram_functions: [AFMSigmaEquation, TopologicalDensity2D]
+      validator_checks: [afm_dynamics_type, topology_field, afm_skyrmion_no_fm_thiele]
+      references: []
+    missing_evidence:
+      - Explicit texture profile and boundary conditions.
+      - Explicit SOT force-density convention and polarization.
+      - Sublattice sign and compensation conventions.
+    promotion_requirements:
+      - Add all assumptions required by afm_skyrmion_sot_full.
+      - Execute the full Wolfram regressions and benchmark cases.
+      - Obtain expert review of sublattice signs and boundary conditions.
+    limitations:
+      - Produces a derivation scaffold, not a complete collective-coordinate result.
+
+  - route_id: fm_antiskyrmion_sot_full
+    material: ferromagnet
+    texture: antiskyrmion
+    drive: spin_orbit_torque
+    geometry: thin_film_2d
+    required_goals: [derive_llg, derive_thiele_equation, compute_topological_charge]
+    required_assumptions:
+      - rigid_antiskyrmion
+      - elliptical_antiskyrmion_profile
+      - antiskyrmion_winding_minus_one
+      - core_boundary_theta_pi
+      - far_field_theta_zero
+      - localized_texture_boundary_terms_vanish
+      - in_plane_spin_polarization
+      - explicit_llg_sot_torque
+      - fixed_helicity
+      - positive_elliptic_scales
+      - translationally_invariant_film
+      - dmi_selected_antiskyrmion_helicity
+    support_level: full_derivation
+    evidence_status:
+      claim_class: known_theory
+      cas_execution: passed
+      analytic_reproduction: passed
+      literature_reproduction: passed
+      assertion_coverage: passed
+      benchmark: registered
+      cross_engine: passed
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Complete executable elliptic antiskyrmion Thiele derivation for the registered anisotropic-DMI ansatz and axes.
+    blocked_claims:
+      - Applicability to an arbitrary magnetic point group or unconstrained antiskyrmion deformation.
+    evidence:
+      config: configs/fm_antiskyrmion_sot.yaml
+      benchmark_cases: [benchmark_cases/B4_fm_antiskyrmion_sot.yaml]
+      evidence_card: evidence_cards/extended/B4_fm_antiskyrmion_sot.yaml
+      independent_gold_script: mathematica/gold/B4_fm_antiskyrmion_sot_gold.wl
+      machine_audit_spec: machine_audit_specs/extended/B4_fm_antiskyrmion_sot.yaml
+      assertion_coverage_registry: knowledge_base/assertion_coverage.yaml
+      cas_execution_records:
+        - analysis/evidence_runs/extended_literature_01/B4_fm_antiskyrmion_sot_evidence/evidence_result.json
+      analytic_reproduction_records:
+        - analysis/evidence_runs/extended_literature_01/B4_fm_antiskyrmion_sot_evidence/evidence_result.json
+      literature_reproduction_record: literature_reproduction_records/extended/B4_fm_antiskyrmion_sot.yaml
+      assertion_coverage_records:
+        - analysis/assertion_coverage/literature_02/assertion_coverage.json
+      cross_engine_records:
+        - analysis/cross_engine/extended_latest/B4_fm_antiskyrmion_sot/cross_engine_result.json
+      wolfram_functions:
+        - AnisotropicDMIDensity
+        - TopologicalDensity2D
+        - ThieleGyrotropicTensor
+      validator_checks:
+        - topology_field
+        - dmi_symmetry
+        - antiskyrmion_elliptic_axes
+        - antiskyrmion_helicity_selection
+      references: []
+    missing_evidence: []
+    promotion_requirements: []
+    limitations:
+      - Elliptic rigid ansatz and fixed helicity.
+      - Material-specific anisotropic DMI tensors still require expert confirmation.
+
+  - route_id: fm_meron_topology_full
+    material: ferromagnet
+    texture: meron
+    drive: null
+    geometry: thin_film_2d
+    required_goals: [compute_topological_charge]
+    required_assumptions:
+      - unit_magnetization
+      - axisymmetric_meron_profile
+      - core_boundary_theta_zero
+      - far_field_theta_pi_over_two
+      - unit_winding_magnitude
+      - symbolic_core_polarity
+    support_level: full_derivation
+    evidence_status:
+      claim_class: known_theory
+      cas_execution: passed
+      analytic_reproduction: passed
+      literature_reproduction: passed
+      assertion_coverage: passed
+      benchmark: registered
+      cross_engine: passed
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Boundary-conditioned half-integer meron charge for the registered axisymmetric profile and winding convention.
+    blocked_claims:
+      - A universal meron charge without core and far-field boundary data.
+    evidence:
+      config: configs/fm_meron_topology.yaml
+      benchmark_cases: [benchmark_cases/C2_fm_meron_topology.yaml]
+      evidence_card: evidence_cards/extended/C2_fm_meron_topology.yaml
+      independent_gold_script: mathematica/gold/C2_fm_meron_topology_gold.wl
+      machine_audit_spec: machine_audit_specs/extended/C2_fm_meron_topology.yaml
+      assertion_coverage_registry: knowledge_base/assertion_coverage.yaml
+      cas_execution_records:
+        - analysis/evidence_runs/extended_literature_01/C2_fm_meron_topology_evidence/evidence_result.json
+      analytic_reproduction_records:
+        - analysis/evidence_runs/extended_literature_01/C2_fm_meron_topology_evidence/evidence_result.json
+      literature_reproduction_record: literature_reproduction_records/extended/C2_fm_meron_topology.yaml
+      assertion_coverage_records:
+        - analysis/assertion_coverage/literature_02/assertion_coverage.json
+      cross_engine_records:
+        - analysis/cross_engine/extended_latest/C2_fm_meron_topology/cross_engine_result.json
+      wolfram_functions: [TopologicalDensity2D]
+      validator_checks: [topology_field, meron_boundary_conditions, core_polarity_helicity]
+      references: []
+    missing_evidence: []
+    promotion_requirements: []
+    limitations:
+      - Axisymmetric isolated meron with prescribed far-field boundary.
+
+  - route_id: fm_bimeron_topology_full
+    material: ferromagnet
+    texture: bimeron
+    drive: null
+    geometry: thin_film_2d
+    required_goals: [compute_topological_charge]
+    required_assumptions:
+      - unit_magnetization
+      - paired_meron_ansatz
+      - constituent_meron_boundary_conditions
+      - additive_constituent_topological_charge
+      - opposite_core_polarities
+      - opposite_winding_numbers
+      - unit_constituent_winding_magnitude
+      - well_separated_meron_pair
+    support_level: full_derivation
+    evidence_status:
+      claim_class: known_theory
+      cas_execution: passed
+      analytic_reproduction: passed
+      literature_reproduction: passed
+      assertion_coverage: passed
+      benchmark: registered
+      cross_engine: passed
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Additive bimeron charge for the registered well-separated two-meron construction and pairing rules.
+    blocked_claims:
+      - Exact charge additivity for strongly overlapping cores without direct full-field integration.
+    evidence:
+      config: configs/fm_bimeron_topology.yaml
+      benchmark_cases: [benchmark_cases/C3_fm_bimeron_topology.yaml]
+      evidence_card: evidence_cards/extended/C3_fm_bimeron_topology.yaml
+      independent_gold_script: mathematica/gold/C3_fm_bimeron_topology_gold.wl
+      machine_audit_spec: machine_audit_specs/extended/C3_fm_bimeron_topology.yaml
+      assertion_coverage_registry: knowledge_base/assertion_coverage.yaml
+      cas_execution_records:
+        - analysis/evidence_runs/extended_literature_01/C3_fm_bimeron_topology_evidence/evidence_result.json
+      analytic_reproduction_records:
+        - analysis/evidence_runs/extended_literature_01/C3_fm_bimeron_topology_evidence/evidence_result.json
+      literature_reproduction_record: literature_reproduction_records/extended/C3_fm_bimeron_topology.yaml
+      assertion_coverage_records:
+        - analysis/assertion_coverage/literature_02/assertion_coverage.json
+      cross_engine_records:
+        - analysis/cross_engine/extended_latest/C3_fm_bimeron_topology/cross_engine_result.json
+      wolfram_functions: [CompositeMeronTopologicalCharge, TopologicalDensity2D]
+      validator_checks: [topology_field, bimeron_pair_conventions, bimeron_overlap_validity]
+      references: []
+    missing_evidence: []
+    promotion_requirements: []
+    limitations:
+      - Well-separated constituent approximation and additive charge construction.
+
+  - route_id: fm_vortex_topology_full
+    material: ferromagnet
+    texture: vortex
+    drive: null
+    geometry: thin_film_2d
+    required_goals: [compute_topological_charge]
+    required_assumptions:
+      - unit_magnetization
+      - winding_number_texture
+      - single_valued_in_plane_phase
+      - unit_vorticity_magnitude
+      - finite_core_regularization
+      - core_polarity_sets_out_of_plane_component
+    support_level: full_derivation
+    evidence_status:
+      claim_class: known_theory
+      cas_execution: passed
+      analytic_reproduction: passed
+      literature_reproduction: passed
+      assertion_coverage: passed
+      benchmark: registered
+      cross_engine: passed
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Closed-contour vortex winding and its distinction from polarity-dependent full-plane topological charge.
+    blocked_claims:
+      - Equating winding number with skyrmion charge without boundary and core information.
+    evidence:
+      config: configs/fm_vortex_topology.yaml
+      benchmark_cases: [benchmark_cases/C4_fm_vortex_topology.yaml]
+      evidence_card: evidence_cards/extended/C4_fm_vortex_topology.yaml
+      independent_gold_script: mathematica/gold/C4_fm_vortex_topology_gold.wl
+      machine_audit_spec: machine_audit_specs/extended/C4_fm_vortex_topology.yaml
+      assertion_coverage_registry: knowledge_base/assertion_coverage.yaml
+      cas_execution_records:
+        - analysis/evidence_runs/extended_literature_01/C4_fm_vortex_topology_evidence/evidence_result.json
+      analytic_reproduction_records:
+        - analysis/evidence_runs/extended_literature_01/C4_fm_vortex_topology_evidence/evidence_result.json
+      literature_reproduction_record: literature_reproduction_records/extended/C4_fm_vortex_topology.yaml
+      assertion_coverage_records:
+        - analysis/assertion_coverage/literature_02/assertion_coverage.json
+      cross_engine_records:
+        - analysis/cross_engine/extended_latest/C4_fm_vortex_topology/cross_engine_result.json
+      wolfram_functions: [WindingNumberFromPhase, TopologicalDensity2D]
+      validator_checks: [topology_field, vortex_winding_review, core_polarity_review]
+      references: []
+    missing_evidence: []
+    promotion_requirements: []
+    limitations:
+      - Boundary winding and polarity are reported separately from full-plane charge.
+
+  - route_id: afm_stripe_unspecified_dmi_review
+    material: collinear_antiferromagnet
+    texture: stripe_domain
+    drive: spin_orbit_torque
+    geometry: generic_2d
+    required_goals: [derive_sigma_model, collective_coordinate_projection, linear_stability]
+    required_assumptions: [dmi_symmetry_not_specified]
+    support_level: review_only
+    evidence_status:
+      claim_class: candidate_extension
+      cas_execution: pending
+      analytic_reproduction: missing
+      literature_reproduction: missing
+      assertion_coverage: missing
+      benchmark: registered
+      cross_engine: missing
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Review-only AFM stripe model-selection guidance and a list of symmetry information needed to choose DMI.
+    blocked_claims:
+      - Any DMI-dependent wall equation while the DMI symmetry remains unspecified.
+    evidence:
+      config: configs/afm_stripe_unspecified_dmi.yaml
+      benchmark_cases: [benchmark_cases/E3_afm_stripe_unspecified_dmi.yaml]
+      wolfram_functions: [AFMSigmaEquation]
+      validator_checks: [dmi_symmetry]
+      references: []
+    missing_evidence:
+      - Crystal or interface symmetry needed to select the DMI invariant.
+      - Boundary conditions and an explicit SOT-force convention.
+    promotion_requirements:
+      - Resolve DMI symmetry from material and geometry evidence.
+      - Select and validate a compatible wall ansatz and boundary terms.
+      - Add an executable gold derivation and negative benchmark.
+    limitations:
+      - No DMI-dependent formula may be claimed while the symmetry is unspecified.
+
+  - route_id: ferrimagnet_skyrmion_sot_review
+    material: ferrimagnet
+    texture: skyrmion
+    drive: spin_orbit_torque
+    geometry: thin_film_2d
+    required_goals: [derive_collective_coordinate_equation, compute_topological_charge]
+    required_assumptions: [two_sublattice_ferrimagnet, sublattice_resolved_topology_required]
+    support_level: review_only
+    evidence_status:
+      claim_class: candidate_extension
+      cas_execution: pending
+      analytic_reproduction: missing
+      literature_reproduction: missing
+      assertion_coverage: missing
+      benchmark: registered
+      cross_engine: missing
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Review-only identification of a two-sublattice ferrimagnetic route and compensation-dependent checks.
+    blocked_claims:
+      - A derived ferrimagnetic skyrmion equation or topology based on total magnetization alone.
+    evidence:
+      config: configs/ferrimagnet_skyrmion_sot.yaml
+      benchmark_cases: [benchmark_cases/F1_ferrimagnet_skyrmion_compensation.yaml]
+      wolfram_functions: []
+      validator_checks: [topology_field]
+      references: []
+    missing_evidence:
+      - Sublattice-resolved angular momenta, damping, torques, and coupling conventions.
+      - A compensation-dependent collective-coordinate derivation.
+    promotion_requirements:
+      - Implement and validate the two-sublattice dynamics.
+      - Verify FM and compensated-AFM limits and gyro-term sign change.
+      - Obtain expert review and add executable benchmark gold answers.
+    limitations:
+      - Current output is model-selection guidance only.
+
+  - route_id: altermagnet_stripe_sot_review
+    material: altermagnet
+    texture: stripe_domain
+    drive: spin_orbit_torque
+    geometry: thin_film_2d
+    required_goals:
+      - derive_anisotropic_afm_like_model
+      - collective_coordinate_projection
+      - linear_stability
+    required_assumptions:
+      - crystal_symmetry_tensors_required
+      - anisotropic_sot_response
+      - human_review_required_for_torque_form
+    support_level: review_only
+    evidence_status:
+      claim_class: candidate_extension
+      cas_execution: pending
+      analytic_reproduction: missing
+      literature_reproduction: missing
+      assertion_coverage: missing
+      benchmark: missing
+      cross_engine: missing
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Candidate altermagnetic Physics IR, symmetry questions, and tensorial derivation plan for expert review.
+    blocked_claims:
+      - Reuse of scalar collinear-AFM mass, damping, stiffness, or SOT coefficients as a final altermagnetic result.
+    evidence:
+      config: configs/altermagnet_stripe_sot_review.yaml
+      benchmark_cases: []
+      wolfram_functions: []
+      validator_checks:
+        - altermagnet_symmetry_tensor
+        - altermagnet_sot_tensor
+        - anisotropic_wall_chain_review
+      references: []
+    missing_evidence:
+      - Magnetic space group and allowed response tensors.
+      - Microscopic or symmetry-derived SOT form.
+      - Tensorial wall mass, damping, stiffness, and force projections.
+    promotion_requirements:
+      - Add a sourced symmetry record and derive all allowed invariants.
+      - Implement tensorial Wolfram projections with special-case regressions.
+      - Obtain expert approval and benchmark against an independent derivation.
+    limitations:
+      - Ordinary collinear-AFM scalar coefficients cannot be assumed.
+
+  - route_id: noncollinear_afm_skyrmion_sot_review
+    material: noncollinear_antiferromagnet
+    texture: skyrmion
+    drive: spin_orbit_torque
+    geometry: thin_film_2d
+    required_goals: [derive_multisublattice_model, compute_topological_charge]
+    required_assumptions:
+      - multi_order_parameter_required
+      - sublattice_resolved_topology_required
+    support_level: review_only
+    evidence_status:
+      claim_class: candidate_extension
+      cas_execution: pending
+      analytic_reproduction: missing
+      literature_reproduction: missing
+      assertion_coverage: missing
+      benchmark: missing
+      cross_engine: missing
+      external_review: pending
+      public_release: missing
+    requires_human_review: true
+    permitted_claim: Candidate multisublattice Physics IR and topology/dynamics review plan for a specified noncollinear AFM.
+    blocked_claims:
+      - Reduction to a single Neel vector or total-magnetization topology without symmetry proof.
+    evidence:
+      config: configs/noncollinear_afm_skyrmion_sot_review.yaml
+      benchmark_cases: []
+      wolfram_functions: []
+      validator_checks:
+        - noncollinear_order_parameter_review
+        - multisublattice_dynamics_review
+        - sublattice_topology_review
+      references: []
+    missing_evidence:
+      - Sublattice/order-parameter manifold and symmetry constraints.
+      - Multi-order-parameter topology and torque definitions.
+      - Executable collective-coordinate derivation.
+    promotion_requirements:
+      - Specify the magnetic structure and independent order parameters.
+      - Implement multisublattice dynamics and topology checks.
+      - Obtain expert approval and add executable benchmark gold answers.
+    limitations:
+      - Current output must stop before a single-vector sigma-model formula.

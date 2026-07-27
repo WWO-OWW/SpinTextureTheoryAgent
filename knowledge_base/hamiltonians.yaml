@@ -1,0 +1,15 @@
+exchange_continuum:
+  wolfram: "A/2 (Grad[nzDummy, coords].Grad[nzDummy, coords])"
+  latex: "\\frac{A}{2}(\\nabla \\mathbf{n})^2"
+
+uniaxial_anisotropy_afm:
+  wolfram: "K/2 (1 - nz^2)"
+  latex: "\\frac{K}{2}(1-n_z^2)"
+
+interfacial_dmi:
+  wolfram: "D (nz Div[nVec, coords] - nVec . Grad[nz, coords])"
+  latex: "D[n_z\\nabla\\cdot\\mathbf{n}-(\\mathbf{n}\\cdot\\nabla)n_z]"
+
+bulk_dmi:
+  wolfram: "D nVec . Curl[nVec, coords]"
+  latex: "D\\mathbf{n}\\cdot(\\nabla\\times\\mathbf{n})"

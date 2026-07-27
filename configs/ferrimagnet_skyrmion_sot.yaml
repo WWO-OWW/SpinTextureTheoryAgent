@@ -1,0 +1,19 @@
+task_name: ferrimagnet_skyrmion_sot
+material: ferrimagnet
+texture: skyrmion
+drive: spin_orbit_torque
+geometry: thin_film_2d
+goals:
+  - derive_collective_coordinate_equation
+  - compute_topological_charge
+assumptions:
+  - two_sublattice_ferrimagnet
+  - near_angular_momentum_compensation
+  - sublattice_resolved_topology_required
+parameters:
+  A: exchange_stiffness
+  K: effective_perpendicular_anisotropy
+  D: interfacial_dmi
+  alpha: gilbert_damping
+  s_net: net_spin_density
+  tauDL: damping_like_sot

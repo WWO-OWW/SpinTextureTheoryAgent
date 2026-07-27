@@ -1,0 +1,18 @@
+task_name: fm_bimeron_topology
+material: ferromagnet
+texture: bimeron
+geometry: thin_film_2d
+goals:
+  - compute_topological_charge
+assumptions:
+  - unit_magnetization
+  - paired_meron_ansatz
+  - constituent_meron_boundary_conditions
+  - additive_constituent_topological_charge
+  - opposite_core_polarities
+  - opposite_winding_numbers
+  - unit_constituent_winding_magnitude
+  - well_separated_meron_pair
+parameters:
+  A: exchange_stiffness
+  K: effective_in_plane_anisotropy

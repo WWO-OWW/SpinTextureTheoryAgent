@@ -1,0 +1,10 @@
+include LICENSE
+include README.md
+include pyproject.toml
+include setup.py
+recursive-include configs *.yaml
+recursive-include docs *.md
+recursive-include knowledge_base *.yaml
+recursive-include mathematica *.wl
+recursive-include src/spintexture_agent/templates *.j2
+recursive-include tests test_*.py

@@ -1,0 +1,21 @@
+task_name: afm_stripe_unspecified_dmi
+material: collinear_antiferromagnet
+texture: stripe_domain
+drive: spin_orbit_torque
+geometry: generic_2d
+goals:
+  - derive_sigma_model
+  - collective_coordinate_projection
+  - linear_stability
+assumptions:
+  - strong_exchange_limit
+  - rigid_domain_wall
+  - dmi_symmetry_not_specified
+parameters:
+  A: exchange_stiffness
+  K: easy_axis_anisotropy
+  D: dmi_strength
+  chi: afm_susceptibility
+  alpha: gilbert_damping
+  s: spin_density
+  tauDL: damping_like_sot

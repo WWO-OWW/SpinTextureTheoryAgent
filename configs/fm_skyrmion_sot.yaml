@@ -1,0 +1,31 @@
+task_name: fm_skyrmion_sot
+material: ferromagnet
+texture: skyrmion
+drive: spin_orbit_torque
+geometry: thin_film_2d
+goals:
+  - derive_llg
+  - derive_thiele_equation
+  - compute_topological_charge
+assumptions:
+  - rigid_skyrmion
+  - unit_magnetization
+  - low_velocity
+  - axisymmetric_skyrmion_profile
+  - unit_winding_number
+  - core_boundary_theta_pi
+  - far_field_theta_zero
+  - localized_texture_boundary_terms_vanish
+  - in_plane_spin_polarization
+  - explicit_llg_sot_torque
+  - fixed_helicity
+parameters:
+  A: exchange_stiffness
+  K: effective_perpendicular_anisotropy
+  D: interfacial_dmi
+  alpha: gilbert_damping
+  gamma: gyromagnetic_ratio
+  Ms: saturation_magnetization
+  s: spin_angular_momentum_surface_density
+  tauDL: damping_like_sot
+  tauFL: field_like_sot

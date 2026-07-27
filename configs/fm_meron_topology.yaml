@@ -1,0 +1,18 @@
+task_name: fm_meron_topology
+material: ferromagnet
+texture: meron
+geometry: thin_film_2d
+goals:
+  - compute_topological_charge
+assumptions:
+  - unit_magnetization
+  - meron_boundary_conditions
+  - half_integer_topological_charge
+  - axisymmetric_meron_profile
+  - core_boundary_theta_zero
+  - far_field_theta_pi_over_two
+  - unit_winding_magnitude
+  - symbolic_core_polarity
+parameters:
+  A: exchange_stiffness
+  K: effective_perpendicular_anisotropy
