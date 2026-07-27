@@ -1,0 +1,12 @@
+schema_version: 1.0.0
+collection_id: spintexture_benchmark_v1_external_collection_round_01
+ledger_status: launch_empty
+allowed_states:
+- invited
+- accepted
+- declined
+- returned
+- withdrawn
+participant_identities: []
+submitted_case_ids: []
+entries: []

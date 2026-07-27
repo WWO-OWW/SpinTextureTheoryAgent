@@ -830,7 +830,10 @@ def verify_collection_release(release_dir: str | Path) -> CollectionReleaseVerif
             benchmark_snapshot_dir / "manifest.yaml"
         )
         try:
-            frozen_capabilities = CapabilityRegistry(capability_snapshot)
+            frozen_capabilities = CapabilityRegistry(
+                capability_snapshot,
+                verify_artifacts=False,
+            )
             expected_routes = _supported_routes(frozen_capabilities)
             if plan.allowed_supported_route_families != expected_routes:
                 issues.append("allowed route families drift from the frozen capability registry")

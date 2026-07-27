@@ -1,0 +1,18 @@
+schema_version: "1.0.0"
+benchmark_id: spintexture_dynamics_bench
+benchmark_version: "0.1.0-development"
+freeze_status: draft
+scorer_registry_version: structured_rule_scorer_v1
+registered_case_roots:
+  - benchmark_cases
+partitions:
+  - primary_partition: development_supported
+    path: benchmark_manifests/v1/development_supported.yaml
+  - primary_partition: held_out_supported
+    path: benchmark_manifests/v1/held_out_supported.yaml
+  - primary_partition: negative_ood
+    path: benchmark_manifests/v1/negative_ood.yaml
+  - primary_partition: candidate_extension
+    path: benchmark_manifests/v1/candidate_extension.yaml
+  - primary_partition: readability
+    path: benchmark_manifests/v1/readability.yaml

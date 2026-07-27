@@ -1,0 +1,15 @@
+schema_version: "1.0.0"
+scorers:
+  - scorer_id: structured_rule_scorer_v1
+    implementation_artifacts:
+      - src/spintexture_agent/evaluator.py
+    supported_case_schema_version: "1.0.0"
+    supported_gold_schema_version: "1.0.0"
+    supported_equivalence_kinds:
+      - exact
+      - contains_all
+      - symbolic_regression_flag
+    limitations:
+      - Symbolic equivalence is accepted only through explicit Wolfram regression flags.
+      - Arbitrary free-form algebraic equivalence is not supported by this scorer version.
+      - Numerical tolerance matching is not supported by this scorer version.

@@ -1,0 +1,17 @@
+schema_version: 1.0.0
+case_id: TEMPLATE_not_for_submission
+primary_partition: readability
+task_fingerprint: replace_with_unique_readability_fingerprint
+title: REPLACE_WITH_CASE_TITLE
+prompt: REPLACE_WITH_COMPLETE_PUBLIC_TASK_PROMPT
+structured_input: null
+target_outputs:
+- accessible_explanation
+audience: REPLACE_WITH_TARGET_AUDIENCE
+allowed_tools:
+- python_orchestrator
+- wolfram_kernel
+repetition_policy:
+  deterministic_runs: 1
+  stochastic_runs: 3
+  aggregation: mean_and_confidence_interval

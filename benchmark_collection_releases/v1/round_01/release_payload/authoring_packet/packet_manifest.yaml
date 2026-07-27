@@ -1,0 +1,6 @@
+schema_version: 1.0.0
+packet_id: spintexture_benchmark_v1_external_authoring
+packet_status: template
+created_at: '2026-07-27T01:21:20+08:00'
+benchmark_manifest: benchmark_manifests/v1/manifest.yaml
+cases: []

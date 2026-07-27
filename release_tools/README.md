@@ -61,3 +61,37 @@ Add `--re-fetch` to the verification command to download the immutable asset
 again and check its exact hash and archive-member inventory. This remains a
 software-distribution check, not held-out, external-review, or named-material
 evidence.
+
+## External benchmark collection Round 01
+
+The benchmark collection is published separately from the software release.
+Create and verify its non-overwriting handoff with:
+
+```bash
+python release_tools/project1_collection_publication.py create-handoff
+python release_tools/project1_collection_publication.py verify-handoff \
+  --handoff analysis/collection_publication_handoffs/project1_benchmark_v1_round01_publication01 \
+  --require-ready
+```
+
+Upload the three exact files under `payload/` to a dedicated, versioned GitHub
+release. Never attach them to or recreate `v0.1.0`. Complete a copy of
+`collection_publication_registration.yaml`, then retrieve and verify every
+remote asset:
+
+```bash
+python release_tools/project1_collection_publication.py verify-remote \
+  --handoff analysis/collection_publication_handoffs/project1_benchmark_v1_round01_publication01 \
+  --record analysis/collection_publication_records/project1_benchmark_v1_round01_github01.yaml \
+  --out analysis/collection_public_release_verifications/project1_benchmark_v1_round01_github01 \
+  --require-pass
+
+python release_tools/project1_collection_publication.py verify-remote-result \
+  --result analysis/collection_public_release_verifications/project1_benchmark_v1_round01_github01 \
+  --require-eligible
+```
+
+Use `--allow-rfc2544-proxy` only for the documented transparent HTTPS proxy
+environment described above. The resulting publication evidence still records
+0 participant identities, 0 submitted cases, and 0 human ratings. It permits a
+real operator to begin invitations; it is not itself benchmark evidence.

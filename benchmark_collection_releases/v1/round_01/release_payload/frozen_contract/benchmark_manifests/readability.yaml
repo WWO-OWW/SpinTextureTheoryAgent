@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+benchmark_id: spintexture_dynamics_bench
+benchmark_version: "0.1.0-development"
+primary_partition: readability
+freeze_status: draft
+cases: []

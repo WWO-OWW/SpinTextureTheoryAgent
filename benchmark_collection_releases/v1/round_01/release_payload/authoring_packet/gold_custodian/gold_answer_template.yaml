@@ -1,0 +1,13 @@
+schema_version: 1.0.0
+case_id: TEMPLATE_not_for_submission
+derivation_scope: REPLACE_WITH_BOUNDED_GOLD_SCOPE
+assumptions:
+- REPLACE_WITH_EXPLICIT_ASSUMPTION
+source_symbol_mapping:
+  source_symbol: agent_symbol
+required_physics:
+- REPLACE_WITH_REQUIRED_PHYSICS_RESULT
+allowed_equivalent_forms:
+- REPLACE_WITH_ALLOWED_EQUIVALENT_FORM
+failure_conditions:
+- REPLACE_WITH_CRITICAL_FAILURE_CONDITION

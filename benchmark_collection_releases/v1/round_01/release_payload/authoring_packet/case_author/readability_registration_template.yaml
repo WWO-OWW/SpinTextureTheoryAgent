@@ -1,0 +1,76 @@
+case_id: TEMPLATE_not_for_submission
+primary_partition: readability
+task_fingerprint: replace_with_unique_readability_fingerprint
+claim_class: accessible_explanation
+gold_visibility: blinded
+leakage_status: held_out_blinded
+scorer: structured_rule_scorer_v1
+allowed_tools:
+- python_orchestrator
+- wolfram_kernel
+repetition_policy:
+  deterministic_runs: 1
+  stochastic_runs: 3
+  aggregation: mean_and_confidence_interval
+public_brief:
+  path: returned/public_cases/readability_CASE_ID.yaml
+  sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+source_provenance:
+  source_type: primary_literature
+  citation: REPLACE_WITH_FULL_PRIMARY_CITATION
+  locator: REPLACE_WITH_DOI_OR_STABLE_URL
+  equation_locators:
+  - REPLACE_WITH_EQUATION_OR_PAGE_LOCATOR
+  snapshot:
+    path: returned/source_snapshots/CASE_ID_source_snapshot.pdf
+    sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+case_author:
+  participant_id: replace_case_author_id
+  name: REPLACE_WITH_CASE_AUTHOR_NAME
+  affiliation: REPLACE_WITH_AFFILIATION
+  contact: REPLACE_WITH_CONTACT
+  independent_of_project_development: true
+gold_custodian:
+  participant_id: replace_gold_custodian_id
+  name: REPLACE_WITH_GOLD_CUSTODIAN_NAME
+  affiliation: REPLACE_WITH_AFFILIATION
+  contact: REPLACE_WITH_CONTACT
+  independent_of_project_development: true
+leakage_attestation:
+  independent_source_selection: true
+  inspected_development_cases: false
+  inspected_agent_outputs: false
+  inspected_gold_answers: false
+  inspected_evaluator_implementation: false
+  consulted_project_artifacts: []
+  attestation: I selected and authored this case independently of the Project 1 development cases, generated
+    outputs, gold answers, and evaluator implementation.
+  signed_by: REPLACE_WITH_CASE_AUTHOR_NAME
+  signed_at: '2000-01-01T00:00:00Z'
+sealed_artifacts:
+- path: returned/sealed_gold/CASE_ID_gold.enc
+  sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+  artifact_type: gold_answer
+  protection: encrypted_archive
+  seal_state: sealed
+  mutable: false
+  opened_before_evaluation: false
+  sealed_at: '2000-01-01T00:00:00Z'
+- path: returned/sealed_gold/CASE_ID_readability_rubric.enc
+  sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+  artifact_type: readability_rubric
+  protection: encrypted_archive
+  seal_state: sealed
+  mutable: false
+  opened_before_evaluation: false
+  sealed_at: '2000-01-01T00:00:00Z'
+custody:
+  custodian_id: replace_gold_custodian_id
+  author_handoff_complete: true
+  author_retained_plaintext_copy: false
+  development_team_has_gold_access: false
+  disclosure_events: []
+  attestation: I received the private evaluation material, froze it under the recorded hash, and did not
+    disclose it to the Project 1 development team.
+  signed_by: REPLACE_WITH_GOLD_CUSTODIAN_NAME
+  signed_at: '2000-01-01T00:00:00Z'

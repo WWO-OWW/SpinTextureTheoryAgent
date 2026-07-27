@@ -1,0 +1,107 @@
+schema_version: "1.0.0"
+benchmark_id: spintexture_dynamics_bench
+benchmark_version: "0.1.0-development"
+primary_partition: development_supported
+freeze_status: draft
+cases:
+  - case_id: A4_afm_stripe_sot
+    task_fingerprint: afm_stripe_sot_wall_chain
+    case_path: benchmark_cases/A4_afm_stripe_sot.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/A4_afm_stripe_sot.yaml
+    claim_class: known_theory_derivation
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: &default_repetition
+      deterministic_runs: 1
+      stochastic_runs: 3
+      aggregation: mean_and_confidence_interval
+    gold_artifact: gold_answers/A4_afm_stripe_sot.yaml
+    gold_mutable: true
+  - case_id: B1_fm_skyrmion_sot
+    task_fingerprint: fm_skyrmion_sot_thiele
+    case_path: benchmark_cases/B1_fm_skyrmion_sot.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/B1_fm_skyrmion_sot.yaml
+    claim_class: known_theory_derivation
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: *default_repetition
+    gold_artifact: gold_answers/B1_fm_skyrmion_sot.yaml
+    gold_mutable: true
+  - case_id: B2_afm_skyrmion_sot
+    task_fingerprint: afm_skyrmion_sot_inertial
+    case_path: benchmark_cases/B2_afm_skyrmion_sot.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/B2_afm_skyrmion_sot.yaml
+    claim_class: known_theory_derivation
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: *default_repetition
+    gold_artifact: gold_answers/B2_afm_skyrmion_sot.yaml
+    gold_mutable: true
+  - case_id: B4_fm_antiskyrmion_sot
+    task_fingerprint: fm_antiskyrmion_sot_anisotropic_thiele
+    case_path: benchmark_cases/B4_fm_antiskyrmion_sot.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/B4_fm_antiskyrmion_sot.yaml
+    claim_class: known_theory_derivation
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: *default_repetition
+    gold_artifact: gold_answers/B4_fm_antiskyrmion_sot.yaml
+    gold_mutable: true
+  - case_id: C2_fm_meron_topology
+    task_fingerprint: fm_meron_boundary_topology
+    case_path: benchmark_cases/C2_fm_meron_topology.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/C2_fm_meron_topology.yaml
+    claim_class: known_theory_derivation
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: *default_repetition
+    gold_artifact: gold_answers/C2_fm_meron_topology.yaml
+    gold_mutable: true
+  - case_id: C3_fm_bimeron_topology
+    task_fingerprint: fm_bimeron_constituent_topology
+    case_path: benchmark_cases/C3_fm_bimeron_topology.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/C3_fm_bimeron_topology.yaml
+    claim_class: known_theory_derivation
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: *default_repetition
+    gold_artifact: gold_answers/C3_fm_bimeron_topology.yaml
+    gold_mutable: true
+  - case_id: C4_fm_vortex_topology
+    task_fingerprint: fm_vortex_contour_topology
+    case_path: benchmark_cases/C4_fm_vortex_topology.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/C4_fm_vortex_topology.yaml
+    claim_class: known_theory_derivation
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: *default_repetition
+    gold_artifact: gold_answers/C4_fm_vortex_topology.yaml
+    gold_mutable: true

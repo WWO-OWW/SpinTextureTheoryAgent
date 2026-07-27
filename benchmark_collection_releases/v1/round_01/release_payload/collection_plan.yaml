@@ -1,0 +1,176 @@
+schema_version: 1.0.0
+collection_id: spintexture_benchmark_v1_external_collection_round_01
+plan_status: frozen
+frozen_at: '2026-07-27T12:00:00+08:00'
+benchmark_id: spintexture_dynamics_bench
+benchmark_version: 0.1.0-development
+scorer_registry_version: structured_rule_scorer_v1
+authoring_schema_version: 1.0.0
+target_quotas:
+- primary_partition: held_out_supported
+  target_cases: 7
+- primary_partition: readability
+  target_cases: 6
+allowed_supported_route_families:
+- route_id: afm_skyrmion_sot_full
+  material: collinear_antiferromagnet
+  texture: skyrmion
+  drive: spin_orbit_torque
+  geometry: thin_film_2d
+  support_level: full_derivation
+  held_out_target_cases: 1
+- route_id: afm_stripe_sot_full
+  material: collinear_antiferromagnet
+  texture: stripe_domain
+  drive: spin_orbit_torque
+  geometry: thin_film_2d
+  support_level: full_derivation
+  held_out_target_cases: 1
+- route_id: fm_antiskyrmion_sot_full
+  material: ferromagnet
+  texture: antiskyrmion
+  drive: spin_orbit_torque
+  geometry: thin_film_2d
+  support_level: full_derivation
+  held_out_target_cases: 1
+- route_id: fm_bimeron_topology_full
+  material: ferromagnet
+  texture: bimeron
+  drive: null
+  geometry: thin_film_2d
+  support_level: full_derivation
+  held_out_target_cases: 1
+- route_id: fm_meron_topology_full
+  material: ferromagnet
+  texture: meron
+  drive: null
+  geometry: thin_film_2d
+  support_level: full_derivation
+  held_out_target_cases: 1
+- route_id: fm_skyrmion_sot_full
+  material: ferromagnet
+  texture: skyrmion
+  drive: spin_orbit_torque
+  geometry: thin_film_2d
+  support_level: full_derivation
+  held_out_target_cases: 1
+- route_id: fm_vortex_topology_full
+  material: ferromagnet
+  texture: vortex
+  drive: null
+  geometry: thin_film_2d
+  support_level: full_derivation
+  held_out_target_cases: 1
+semantic_fingerprint_exclusions:
+- case_id: F1_ferrimagnet_skyrmion_compensation
+  primary_partition: candidate_extension
+  task_fingerprint: ferrimagnet_skyrmion_compensation_candidate
+  reason: already_registered_or_development_exposed
+- case_id: A4_afm_stripe_sot
+  primary_partition: development_supported
+  task_fingerprint: afm_stripe_sot_wall_chain
+  reason: already_registered_or_development_exposed
+- case_id: B1_fm_skyrmion_sot
+  primary_partition: development_supported
+  task_fingerprint: fm_skyrmion_sot_thiele
+  reason: already_registered_or_development_exposed
+- case_id: B2_afm_skyrmion_sot
+  primary_partition: development_supported
+  task_fingerprint: afm_skyrmion_sot_inertial
+  reason: already_registered_or_development_exposed
+- case_id: B4_fm_antiskyrmion_sot
+  primary_partition: development_supported
+  task_fingerprint: fm_antiskyrmion_sot_anisotropic_thiele
+  reason: already_registered_or_development_exposed
+- case_id: C2_fm_meron_topology
+  primary_partition: development_supported
+  task_fingerprint: fm_meron_boundary_topology
+  reason: already_registered_or_development_exposed
+- case_id: C3_fm_bimeron_topology
+  primary_partition: development_supported
+  task_fingerprint: fm_bimeron_constituent_topology
+  reason: already_registered_or_development_exposed
+- case_id: C4_fm_vortex_topology
+  primary_partition: development_supported
+  task_fingerprint: fm_vortex_contour_topology
+  reason: already_registered_or_development_exposed
+- case_id: E1_afm_skyrmion_not_fm_thiele
+  primary_partition: negative_ood
+  task_fingerprint: afm_skyrmion_wrong_fm_thiele_control
+  reason: already_registered_or_development_exposed
+- case_id: E3_afm_stripe_unspecified_dmi
+  primary_partition: negative_ood
+  task_fingerprint: afm_stripe_unspecified_dmi_control
+  reason: already_registered_or_development_exposed
+- case_id: E4_afm_topology_not_total_magnetization
+  primary_partition: negative_ood
+  task_fingerprint: afm_topology_wrong_total_magnetization_control
+  reason: already_registered_or_development_exposed
+role_separation:
+  project_developers_may_author_independent_cases: false
+  case_author_must_be_independent_of_project_development: true
+  gold_custodian_must_be_independent_of_project_development: true
+  case_author_and_gold_custodian_must_differ: true
+  development_team_may_access_plaintext_gold_before_evaluation: false
+  identities_must_be_blank_at_launch: true
+source_eligibility:
+  allowed_source_types:
+  - primary_literature
+  - external_contribution
+  stable_source_snapshot_required: true
+  citation_must_resolve: true
+  exact_equation_or_page_locators_required: true
+  source_must_not_have_been_used_in_project_development: true
+  source_must_support_declared_gold_scope: true
+  scientific_relevance_review_required: true
+  unverifiable_or_retracted_sources_eligible: false
+readability_audience_coverage:
+- audience_id: experimental_magnetism_researcher
+  audience_description: Experimental magnetism researcher without specialist derivation training
+  target_cases: 2
+  minimum_independent_raters_per_case: 2
+- audience_id: magnetic_imaging_or_device_researcher
+  audience_description: Magnetic imaging or spintronic-device researcher using theory outputs
+  target_cases: 2
+  minimum_independent_raters_per_case: 2
+- audience_id: physics_graduate_reader_outside_texture_theory
+  audience_description: Physics graduate reader outside magnetic-texture theory
+  target_cases: 2
+  minimum_independent_raters_per_case: 2
+deadlines:
+  invitations_open: '2026-08-03T00:00:00+08:00'
+  acceptance_due: '2026-08-17T23:59:59+08:00'
+  sealed_submission_due: '2026-09-30T23:59:59+08:00'
+  custody_confirmation_due: '2026-10-14T23:59:59+08:00'
+  intake_review_close: '2026-10-21T23:59:59+08:00'
+source_contracts:
+- path: frozen_contract/benchmark_manifests/candidate_extension.yaml
+  sha256: dce945a0cf39d6381d0812c81451741298ef6198f723cab1fbdb84277f9c7f8c
+  size_bytes: 918
+- path: frozen_contract/benchmark_manifests/development_supported.yaml
+  sha256: 769b050859e17ca5a0937f9fa377a2521727a6840ccd2532c5f938b1bc5ae4af
+  size_bytes: 4397
+- path: frozen_contract/benchmark_manifests/held_out_supported.yaml
+  sha256: 7e78f119ef30285603c8b98626b8167f5e04cfffce36a75817036f7199a91ecb
+  size_bytes: 173
+- path: frozen_contract/benchmark_manifests/manifest.yaml
+  sha256: 5a04702233e323581d3be032e319c55b4e310543049845cf53cd46b17e4196a8
+  size_bytes: 708
+- path: frozen_contract/benchmark_manifests/negative_ood.yaml
+  sha256: 57db26cd42cb43cbe243881040df83cf17e416a84186203349b6b8d5f827d943
+  size_bytes: 2200
+- path: frozen_contract/benchmark_manifests/readability.yaml
+  sha256: 3f0abc08054f9f11878290be340e4463e832c380941acaf84e7943144b5ee38e
+  size_bytes: 166
+- path: frozen_contract/docs/BENCHMARK_CASE_AUTHORING_PROTOCOL.md
+  sha256: fc82dbee6e57ab96d734598489425759f509fc31656c02b9f6faec3835b90240
+  size_bytes: 5199
+- path: frozen_contract/knowledge_base/benchmark_scorers.yaml
+  sha256: 3c54a4762ee52d0690add0ca33ab40139dd6fb4aa40089992a82a87034e6df1c
+  size_bytes: 609
+- path: frozen_contract/knowledge_base/capabilities.yaml
+  sha256: d4b25f8d9b81914b606a2b5ee0f45be41d84536afd0ec365acfbca9f2e16b8ef
+  size_bytes: 26372
+invited_participant_identities: []
+submitted_case_ids: []
+real_manifest_registration_allowed: false

@@ -1,0 +1,23 @@
+schema_version: "1.0.0"
+benchmark_id: spintexture_dynamics_bench
+benchmark_version: "0.1.0-development"
+primary_partition: candidate_extension
+freeze_status: draft
+cases:
+  - case_id: F1_ferrimagnet_skyrmion_compensation
+    task_fingerprint: ferrimagnet_skyrmion_compensation_candidate
+    case_path: benchmark_cases/F1_ferrimagnet_skyrmion_compensation.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/F1_ferrimagnet_skyrmion_compensation.yaml
+    claim_class: candidate_routing
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy:
+      deterministic_runs: 1
+      stochastic_runs: 3
+      aggregation: mean_and_confidence_interval
+    gold_artifact: benchmark_cases/F1_ferrimagnet_skyrmion_compensation.yaml
+    gold_mutable: true

@@ -1,0 +1,51 @@
+schema_version: "1.0.0"
+benchmark_id: spintexture_dynamics_bench
+benchmark_version: "0.1.0-development"
+primary_partition: negative_ood
+freeze_status: draft
+cases:
+  - case_id: E1_afm_skyrmion_not_fm_thiele
+    task_fingerprint: afm_skyrmion_wrong_fm_thiele_control
+    case_path: benchmark_cases/E1_afm_skyrmion_not_fm_thiele.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/E1_afm_skyrmion_not_fm_thiele.yaml
+    claim_class: negative_safety
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: &default_repetition
+      deterministic_runs: 1
+      stochastic_runs: 3
+      aggregation: mean_and_confidence_interval
+    gold_artifact: benchmark_cases/E1_afm_skyrmion_not_fm_thiele.yaml
+    gold_mutable: true
+  - case_id: E3_afm_stripe_unspecified_dmi
+    task_fingerprint: afm_stripe_unspecified_dmi_control
+    case_path: benchmark_cases/E3_afm_stripe_unspecified_dmi.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/E3_afm_stripe_unspecified_dmi.yaml
+    claim_class: negative_safety
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: *default_repetition
+    gold_artifact: benchmark_cases/E3_afm_stripe_unspecified_dmi.yaml
+    gold_mutable: true
+  - case_id: E4_afm_topology_not_total_magnetization
+    task_fingerprint: afm_topology_wrong_total_magnetization_control
+    case_path: benchmark_cases/E4_afm_topology_not_total_magnetization.yaml
+    source_provenance:
+      source_type: internal_development
+      locator: benchmark_cases/E4_afm_topology_not_total_magnetization.yaml
+    claim_class: negative_safety
+    gold_visibility: public
+    leakage_status: development_exposed
+    scorer: structured_rule_scorer_v1
+    allowed_tools: [python_orchestrator, wolfram_kernel]
+    repetition_policy: *default_repetition
+    gold_artifact: benchmark_cases/E4_afm_topology_not_total_magnetization.yaml
+    gold_mutable: true

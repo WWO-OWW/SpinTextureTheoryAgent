@@ -1,0 +1,25 @@
+schema_version: 1.0.0
+case_id: TEMPLATE_not_for_submission
+audience: REPLACE_WITH_TARGET_AUDIENCE
+scale: 1=incorrect_or_missing; 3=adequate; 5=complete_and_faithful
+criteria:
+- criterion_id: formula_fidelity
+  prompt: The accessible view preserves the formal equations and conventions.
+  critical: true
+  minimum_score: 4
+- criterion_id: assumptions_and_validity
+  prompt: Assumptions and validity limits remain explicit.
+  critical: true
+  minimum_score: 4
+- criterion_id: warning_and_certainty_preservation
+  prompt: Warnings, review requirements, and certainty are not softened.
+  critical: true
+  minimum_score: 4
+- criterion_id: symbol_clarity
+  prompt: Symbols and physical terms are understandable to the target audience.
+  critical: false
+  minimum_score: 3
+- criterion_id: task_comprehension
+  prompt: The target reader can identify what was derived, what it means, and when it applies.
+  critical: false
+  minimum_score: 3
